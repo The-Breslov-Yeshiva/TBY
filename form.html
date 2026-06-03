@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Breslov Yeshiva - Student Application</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="navigation.js"></script>
   <style>
     .gradient-text {
       background: linear-gradient(to right, #60a5fa, #c084fc, #60a5fa);
@@ -52,13 +53,15 @@
 </head>
 
 <body class="bg-gray-950 min-h-screen">
+  <site-navigation></site-navigation>
+
   <!-- Animated background -->
   <div class="fixed inset-0 -z-10">
     <div class="absolute inset-0 bg-gradient-to-br from-indigo-950 via-gray-900 to-purple-950"></div>
     <div class="absolute inset-0 hero-pattern opacity-30"></div>
   </div>
 
-  <div class="min-h-screen flex items-center justify-center px-4 py-8">
+  <div class="site-main-shell min-h-screen flex items-center justify-center px-4 py-28">
     <div class="w-full max-w-4xl">
       <!-- Header -->
       <div class="text-center mb-8">
@@ -398,6 +401,17 @@
       </form>
     </div>
   </div>
+
+  <footer class="site-main-shell border-t border-white/10 bg-gray-950/50">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 text-sm text-gray-400 md:flex-row md:items-center md:justify-between lg:px-8">
+      <p>&copy; 2026 The Breslov Yeshiva</p>
+      <nav class="flex flex-wrap gap-4" aria-label="Legal footer">
+        <a href="/privacy" class="hover:text-white">Privacy</a>
+        <a href="/terms" class="hover:text-white">Terms</a>
+        <a href="/accessibility" class="hover:text-white">Accessibility</a>
+      </nav>
+    </div>
+  </footer>
 
   <script>
     let currentStep = 1;

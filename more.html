@@ -6,7 +6,7 @@
   <meta property="og:title" content="The Breslov Yeshiva" />
   <meta name="og:description" content="An English-Speaking Yeshiva Dedicated to Healthy, Balanced Growth in Torah & Avodas Hashem " />
   <meta name="og:keywords" content="Yeshiva, Breslov, Israel, Jerusalem, Torah, Talmud, Chassidus" />
-  <meta property="og:image" content="https://www.thebreslovyeshiva.com/tby-meta-image.jpg" />
+  <meta property="og:image" content="https://www.thebreslovyeshiva.com/yeshiva-logo-og.jpg" />
   <title>The Breslov Yeshiva | Submission Received</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -18,28 +18,15 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="navigation.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="bg-gray-900 h-full">
   <div>
-    <!-- Header -->
-    <header class="absolute inset-x-0 top-0 z-50">
-      <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div class="flex lg:flex-1">
-          <a href="/" class="-m-1.5 p-1.5">
-            <span class="sr-only">The Breslov Yeshiva Logo</span>
-            <img class="h-16 w-auto" src="logo-white.png" alt="" />
-          </a>
-        </div>
-        <div class="flex lg:flex-1 lg:justify-end ">
-          <a href="donate" class="text-sm font-semibold leading-6 text-white py-1.5 px-3.5 rounded-xl bg-white/20 hover:bg-white/30">Donate</a>
-          <a href="#register" class="ml-4 text-sm font-semibold leading-6 text-white py-1.5 px-3.5 rounded-xl bg-white/20 hover:bg-white/30">Register Now <span aria-hidden="true">&rarr;</span></a>
-        </div>
-      </nav>
-    </header>
+    <site-navigation></site-navigation>
 
-    <main class="relative isolate">
+    <main class="site-main-shell relative isolate">
       <!-- CTA section -->
       <div id="register" class="relative isolate mt-32 sm:mt-40 px-12 lg:px-32">
         <div class="mx-auto sm:px-6 lg:px-8">
@@ -104,15 +91,20 @@
     </main>
 
     <!-- Footer -->
-    <footer class="relative mt-32 sm:mt-40" aria-labelledby="footer-heading">
+    <footer class="site-main-shell relative mt-32 sm:mt-40" aria-labelledby="footer-heading">
       <h2 id="footer-heading" class="sr-only">Footer</h2>
       <div class="mx-auto max-w-7xl px-6 pb-8 lg:px-8">
         <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-          <div class="flex w-full justify-between">
+          <div class="flex w-full flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <p class="text-xs leading-5 text-gray-400 text-center">
-              &copy; 2024 The Breslov Yeshiva. All rights reserved.
+              &copy; 2026 The Breslov Yeshiva. All rights reserved.
             </p>
-            <img class="h-10" src="logo-white.png" alt="The Breslov Yeshiva" />
+            <nav class="flex flex-wrap justify-center gap-4 text-xs text-gray-400" aria-label="Legal footer">
+              <a href="/privacy" class="hover:text-white">Privacy</a>
+              <a href="/terms" class="hover:text-white">Terms</a>
+              <a href="/accessibility" class="hover:text-white">Accessibility</a>
+            </nav>
+            <img class="h-10" src="yeshiva-logo-web.png" alt="Yeshivas Uvacharta Bachayim" width="1600" height="785" decoding="async" />
           </div>
         </div>
       </div>

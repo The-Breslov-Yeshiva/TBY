@@ -1,121 +1,180 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta property="og:title" content="The Breslov Yeshiva" />
-  <meta name="og:description" content="An English-Speaking Yeshiva Dedicated to Healthy, Balanced Growth in Torah & Avodas Hashem " />
-  <meta name="og:keywords" content="Yeshiva, Breslov, Israel, Jerusalem, Torah, Talmud, Chassidus" />
-  <meta property="og:image" content="https://www.thebreslovyeshiva.com/tby-meta-image.jpg" />
-  <title>The Breslov Yeshiva | Donate</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-  <meta name="msapplication-TileColor" content="#da532c" />
-  <meta name="theme-color" content="#0F004B" />
+  <meta charset="UTF-8">
+  <meta property="og:title" content="The Breslov Yeshiva | Donate">
+  <meta name="og:description" content="Partner with The Breslov Yeshiva and support authentic Torah education.">
+  <meta name="og:keywords" content="Yeshiva, Breslov, Donate, Torah, Israel">
+  <meta property="og:image" content="https://www.thebreslovyeshiva.com/yeshiva-logo-og.jpg">
+  <title>Donate | The Breslov Yeshiva</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#0F004B">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=BAA8ToIK5LjDSPpjGGTGMj8I1GnuynCjKQvGDfhEScILDg1I0JmQjmrf-QNCvzxGccMx1peO8gXvNIz99g&amp;components=hosted-buttons&amp;enable-funding=venmo&amp;currency=USD"></script>
+  <script defer src="navigation.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    [x-cloak] { display: none !important; }
+    body { background-color: #030712; color: #f3f4f6; }
+    .gradient-text {
+      background: linear-gradient(to right, #60a5fa, #c084fc, #60a5fa);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 3s ease infinite;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
 </head>
 
-<body class="bg-gray-900 h-full">
-  <div>
-    <!-- Header -->
-    <header class="absolute inset-x-0 top-0 z-50">
-      <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div class="flex lg:flex-1">
-          <a href="/" class="-m-1.5 p-1.5">
-            <span class="sr-only">The Breslov Yeshiva Logo</span>
-            <img class="h-16 w-auto" src="logo-white.png" alt="" />
-          </a>
-        </div>
-        <div class="flex lg:flex-1 lg:justify-end">
-          <a href="/#register" class="text-sm font-semibold leading-6 text-white py-1.5 px-3.5 rounded-xl bg-white/20 hover:bg-white/30">Register Now <span aria-hidden="true">&rarr;</span></a>
-        </div>
-      </nav>
-    </header>
+<body class="min-h-screen overflow-x-hidden">
+  <site-navigation></site-navigation>
 
-    <main class="relative isolate">
-      <!-- CTA section -->
-      <div id="register" class="relative isolate mt-32 sm:mt-40 px-12 lg:px-32">
-        <div class="mx-auto sm:px-6 lg:px-8">
-          <div class="mx-auto flex flex-col bg-white/5 px-6 py-16 ring-1 ring-white/10 rounded-xl sm:rounded-3xl sm:p-8 lg:mx-0 lg:flex-row lg:items-center lg:py-20">
-            <div class="w-full flex-col items-center">
-              <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">Donate</h2>
-              <p class="mt-6 text-lg leading-8 text-gray-300 text-center">
+  <main class="site-main-shell pt-32 pb-20">
+    <section class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-sm font-bold uppercase tracking-[0.2em] text-amber-400">Support Torah Growth</p>
+        <h1 class="mt-4 text-5xl font-bold tracking-tight text-white sm:text-6xl">Partner in <span class="gradient-text">Our Mission</span></h1>
+        <p class="mt-6 text-xl leading-8 text-gray-300">Your support enables us to continue transforming lives through authentic Torah education, personal mentorship, and a healthy makom Torah in Ramat Beit Shemesh.</p>
+      </div>
+    </section>
 
-                <a href="https://donate.stripe.com/fZebL4dC66aQaHe144" class="flex items-center mb-4 hover:bg-white/10">
-                  <img class="h-16 w-auto rounded-2xl" src="stripe-icon.png" alt="" />
-                  <span class="pl-4 text-xl lg:text-3xl font-semibold text-left">Donate with Credit Card</span>
-                </a>
+    <section class="mx-auto mt-16 max-w-7xl px-6 lg:px-8">
+      <div class="grid gap-8 lg:grid-cols-2">
+        <div class="min-w-0 rounded-3xl border border-white/10 bg-gradient-to-br from-indigo-900/20 to-purple-900/20 p-8 backdrop-blur-sm">
+          <h2 class="text-2xl font-bold text-white mb-6">Make a Difference</h2>
+          <p class="text-gray-300 mb-8">Every contribution helps us provide scholarships, strengthen daily shiurim, and maintain a warm environment for serious growth.</p>
 
+          <div x-data="{ showPayPal: false }" class="space-y-4">
+            <a href="https://donate.stripe.com/fZebL4dC66aQaHe144" target="_blank" rel="noopener noreferrer"
+              class="flex items-center rounded-2xl border border-white/10 bg-white/10 p-4 transition-all duration-300 hover:bg-white/20">
+              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500">
+                <svg class="h-7 w-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                </svg>
+              </div>
+              <span class="ml-4 text-lg font-semibold text-white">Credit Card (Stripe)</span>
+              <svg class="ml-auto h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
 
-                <a href="https://cash.app/$TBYeshiva" class="flex items-center mb-4 hover:bg-white/10">
-                  <img class="h-16 w-auto rounded-2xl" src="cash-app-icon.png" alt="" />
-                  <span class="pl-4 text-xl lg:text-3xl font-semibold text-left">Donate with Cash App</span>
-                </a>
+            <a href="https://cash.app/$TBYeshiva" target="_blank" rel="noopener noreferrer"
+              class="flex items-center rounded-2xl border border-white/10 bg-white/10 p-4 transition-all duration-300 hover:bg-white/20">
+              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-500">
+                <span class="text-xl font-bold text-white">$</span>
+              </div>
+              <span class="ml-4 text-lg font-semibold text-white">Cash App</span>
+              <svg class="ml-auto h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
 
-                <a href="https://venmo.com/TheBreslov-Yeshiva" class="flex items-center hover:bg-white/10">
-                  <img class="h-16 w-auto rounded-2xl" src="venmo-logo-button.png" alt="" />
-                  <span class="pl-4 text-xl lg:text-3xl font-semibold text-left">Donate with Venmo</span>
-                </a>
+            <a href="https://venmo.com/TheBreslov-Yeshiva" target="_blank" rel="noopener noreferrer"
+              class="flex items-center rounded-2xl border border-white/10 bg-white/10 p-4 transition-all duration-300 hover:bg-white/20">
+              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-400 to-blue-600">
+                <span class="text-xl font-bold text-white">V</span>
+              </div>
+              <span class="ml-4 text-lg font-semibold text-white">Venmo</span>
+              <svg class="ml-auto h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
 
+            <div class="overflow-hidden rounded-2xl border border-white/10 bg-white/10">
+              <button type="button" @click="showPayPal = !showPayPal" class="flex w-full items-center p-4 transition-all duration-300 hover:bg-white/20">
+                <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-500 to-orange-500">
+                  <svg class="h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a9.124 9.124 0 0 1-.414 2.06c-1.147 5.632-5.05 7.626-9.75 7.626h-2.353c-.524 0-.968.382-1.05.9L6.333 21.337H4.47a.641.641 0 0 1-.633-.74L6.944.901C7.026.382 7.474 0 7.998 0h7.46c2.57 0 4.578.543 5.69 1.81.344.393.62.82.833 1.28.559 1.205.629 2.67.241 4.327z"></path>
+                  </svg>
+                </div>
+                <span class="ml-4 text-lg font-semibold text-white">PayPal</span>
+                <svg class="ml-auto h-5 w-5 text-gray-400 transition-transform duration-300" :class="showPayPal ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
 
-                <a href="/" class="hidden flex -m-1.5 p-1.5">
-                  <img class="h-16 w-auto" src="zelle-logo.png " alt="" />
-                  <span>Zelle thebreslovyeshiva@gmail.com</span>
-
-                </a>
-              </p>
-              <div class="mt-10 flex">
-                <!-- FORM GOES HERE-->
+              <div x-show="showPayPal" x-transition class="border-t border-white/10 bg-white/5 p-6" x-cloak>
+                <div class="rounded-xl border border-white/10 bg-white/30 p-6">
+                  <div id="paypal-container-MWUP5A2ENS4B4"></div>
+                  <script>
+                    if (typeof paypal !== 'undefined') {
+                      paypal.HostedButtons({
+                        hostedButtonId: 'MWUP5A2ENS4B4',
+                      }).render('#paypal-container-MWUP5A2ENS4B4')
+                    }
+                  </script>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="absolute inset-x-0 -top-72 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl" aria-hidden="true">
-          <div class="aspect-[1318/752] w-[82.375rem] flex-none bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-25" style="
-                clip-path: polygon(
-                  73.6% 51.7%,
-                  91.7% 11.8%,
-                  100% 46.4%,
-                  97.4% 82.2%,
-                  92.5% 84.9%,
-                  75.7% 64%,
-                  55.3% 47.5%,
-                  46.5% 49.4%,
-                  45% 62.9%,
-                  50.3% 87.2%,
-                  21.3% 64.1%,
-                  0.1% 100%,
-                  5.4% 51.1%,
-                  21.4% 63.9%,
-                  58.9% 0.2%,
-                  73.6% 51.7%
-                );
-              "></div>
-        </div>
-      </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="relative mt-32 sm:mt-40" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" class="sr-only">Footer</h2>
-      <div class="mx-auto max-w-7xl px-6 pb-8 lg:px-8">
-        <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-          <div class="flex w-full justify-between">
-            <p class="text-xs leading-5 text-gray-400 text-center">
-              &copy; 2024 The Breslov Yeshiva. All rights reserved.
-            </p>
-            <img class="h-10" src="logo-white.png" alt="The Breslov Yeshiva" />
+        <div class="min-w-0 rounded-3xl border border-white/10 bg-gradient-to-br from-purple-900/20 to-pink-900/20 p-8 backdrop-blur-sm">
+          <h2 class="text-2xl font-bold text-white mb-6">Your Impact</h2>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-purple-500/20">
+                <span class="font-bold text-purple-400">1</span>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-1">Enable Torah Learning</h3>
+                <p class="text-sm text-gray-400">Support daily shiurim, chavrusa learning, and a full seder built for steady growth.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-pink-500/20">
+                <span class="font-bold text-pink-400">2</span>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-1">Provide Scholarships</h3>
+                <p class="text-sm text-gray-400">Help dedicated students join the program when finances would otherwise stand in the way.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-indigo-500/20">
+                <span class="font-bold text-indigo-400">3</span>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-1">Build the Future</h3>
+                <p class="text-sm text-gray-400">Invest in the next generation of Torah leaders, mentors, husbands, and fathers.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="font-semibold text-white">Questions about giving?</h3>
+            <p class="mt-2 text-sm text-gray-400">For sponsorships, dedications, or scholarship gifts, contact us directly.</p>
+            <a href="/contact" class="mt-4 inline-flex rounded-full bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">Contact Us</a>
           </div>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
+  </main>
+
+  <footer class="site-main-shell border-t border-white/10 bg-gray-950/50">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 text-sm text-gray-400 md:flex-row md:items-center md:justify-between lg:px-8">
+      <p>&copy; 2026 The Breslov Yeshiva</p>
+      <nav class="flex flex-wrap gap-4" aria-label="Legal footer">
+        <a href="/privacy" class="hover:text-white">Privacy</a>
+        <a href="/terms" class="hover:text-white">Terms</a>
+        <a href="/accessibility" class="hover:text-white">Accessibility</a>
+      </nav>
+      <p>32 Nachal Lachish, Ramat Beit Shemesh, Israel</p>
+    </div>
+  </footer>
 </body>
 
 </html>

@@ -1,0 +1,16 @@
+github_deploy_key
+github_deploy_key.pub
+node_modules/
+.env
+.cloudflare-env.ps1
+.DS_Store
+dist/
+build/
+.next/
+out/
+test-results/
+tsconfig.tsbuildinfo
+video/
+video-upscale-samples/
+TBY Gallery/
+Headshots Rabbi's/

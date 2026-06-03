@@ -6,7 +6,7 @@
   <meta property="og:title" content="The Breslov Yeshiva" />
   <meta name="og:description" content="An English-Speaking Yeshiva Dedicated to Healthy, Balanced Growth in Torah & Avodas Hashem">
   <meta name="og:keywords" content="Yeshiva, Breslov, Israel, Jerusalem, Torah, Talmud, Chassidus">
-  <meta property="og:image" content="https://www.thebreslovyeshiva.com/tby-meta-image.jpg" />
+  <meta property="og:image" content="https://www.thebreslovyeshiva.com/yeshiva-logo-og.jpg" />
   <title>The Breslov Yeshiva</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -32,244 +32,140 @@
   </style>
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://player.vimeo.com/api/player.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="schedule-data.js"></script>
+  <script defer src="navigation.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script
-    src="https://www.paypal.com/sdk/js?client-id=BAA8ToIK5LjDSPpjGGTGMj8I1GnuynCjKQvGDfhEScILDg1I0JmQjmrf-QNCvzxGccMx1peO8gXvNIz99g&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
   <style>
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-20px);
-      }
+    [x-cloak] { display: none !important; }
+    .sidebar-transition { transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .nav-item-active { background: rgba(217, 119, 6, 0.1); color: #fbbf24; border-right: 2px solid #fbbf24; }
+    .home-hero-shell {
+      margin: 0 auto;
+      max-width: none;
+      width: 100%;
     }
-
-    @keyframes glow {
-
-      0%,
-      100% {
-        opacity: 0.5;
-      }
-
-      50% {
-        opacity: 0.8;
-      }
+    .home-hero-main {
+      margin: 0 auto;
+      max-width: 88rem;
+      width: 100%;
     }
-
-    .float-animation {
-      animation: float 6s ease-in-out infinite;
+    .home-hero-description {
+      max-width: 42rem;
     }
-
-    .glow-animation {
-      animation: glow 4s ease-in-out infinite;
+    .home-hero-title-main,
+    .home-hero-title-subtitle {
+      display: block;
+      max-width: 100%;
     }
-
-    .gradient-text {
-      background: linear-gradient(to right, #60a5fa, #c084fc, #60a5fa);
-      background-size: 200% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradient 3s ease infinite;
-    }
-
-    @keyframes gradient {
-      0% {
-        background-position: 0% 50%;
+    @media (max-width: 640px) {
+      .home-hero-title {
+        font-size: 2.25rem;
+        line-height: 1.1;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 19rem;
       }
-
-      50% {
-        background-position: 100% 50%;
+      .home-hero-title-main,
+      .home-hero-title-subtitle {
+        margin-left: auto;
+        margin-right: auto;
       }
-
-      100% {
-        background-position: 0% 50%;
+      .home-hero-title-subtitle {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        max-width: 18rem;
+      }
+      .home-hero-description {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        max-width: 19rem;
       }
     }
-
-    .card-hover {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    .home-schedule-widget {
+      margin: 4rem auto 0;
+      max-width: 42rem;
+      width: 100%;
     }
-
-    .card-hover:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .hero-pattern {
-      background-image:
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 50%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 50% 100%, rgba(255, 219, 98, 0.3) 0%, transparent 50%);
-    }
-
-    .scroll-indicator {
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-
-      0%,
-      20%,
-      50%,
-      80%,
-      100% {
-        transform: translateY(0);
+    @media (min-width: 1024px) {
+      .home-hero-description {
+        max-width: 34rem;
       }
-
-      40% {
-        transform: translateY(-10px);
-      }
-
-      60% {
-        transform: translateY(-5px);
+      .home-schedule-widget {
+        margin-left: auto;
+        margin-right: 0;
       }
     }
-
-    .video-container {
-      position: relative;
-      border-radius: 1.5rem;
+    @media (min-width: 1800px) {
+      .home-hero-shell {
+        position: relative;
+      }
+      .home-schedule-widget {
+        margin: 0;
+        max-width: 26rem;
+        position: absolute;
+        right: clamp(1.5rem, 3vw, 4rem);
+        top: 50%;
+        transform: translateY(-42%);
+      }
+    }
+    .vimeo-video-shell {
       overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
     }
-
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, rgba(79, 70, 229, 0.1), rgba(147, 51, 234, 0.1));
-      pointer-events: none;
+    .video-container {
+      width: 100%;
+      max-width: min(44rem, 100%);
     }
-
-    .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .play-button:hover {
-      transform: translate(-50%, -50%) scale(1.1);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9));
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .play-button::before {
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 20px solid rgba(79, 70, 229, 0.8);
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid transparent;
-      margin-left: 4px;
-    }
-
-    .video-hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .close-button {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 40px;
-      height: 40px;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 10;
-    }
-
-    .close-button:hover {
-      background: rgba(0, 0, 0, 0.9);
-      transform: scale(1.1);
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
+    @media (min-width: 1280px) {
+      .video-container {
+        transform: translateX(-1.75rem);
       }
     }
-
-    .video-section {
-      animation: fadeInUp 0.8s ease-out 0.3s both;
+    @media (min-width: 1800px) {
+      .video-container {
+        transform: translateX(clamp(-5rem, -4vw, -3rem));
+      }
+    }
+    .video-preview-trigger {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.08), rgba(15, 23, 42, 0.48));
+      border: 0;
+      cursor: pointer;
+    }
+    .video-preview-trigger:focus-visible {
+      outline: 3px solid rgba(251, 191, 36, 0.92);
+      outline-offset: 4px;
+    }
+    .video-preview-play {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 9999px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+      color: #111827;
+      display: inline-flex;
+      height: 5rem;
+      justify-content: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+      width: 5rem;
+    }
+    .video-preview-trigger:hover .video-preview-play,
+    .video-preview-trigger:focus-visible .video-preview-play {
+      background: #ffffff;
+      transform: scale(1.06);
+    }
+    body.video-modal-open {
+      overflow: hidden;
     }
   </style>
-
-  <!-- Script to show body when styles are loaded -->
-  <script>
-    window.addEventListener('load', function () {
-      document.body.classList.add('loaded');
-    });
-  </script>
 </head>
 
-<body class="bg-gray-950 min-h-screen overflow-x-hidden">
-  <!-- Animated background -->
-  <div class="fixed inset-0 -z-10">
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-950 via-gray-900 to-purple-950"></div>
-    <div class="absolute inset-0 hero-pattern opacity-30"></div>
-    <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-700 rounded-full mix-blend-multiply filter blur-xl opacity-20 float-animation"></div>
-    <div class="absolute top-0 -right-4 w-72 h-72 bg-indigo-700 rounded-full mix-blend-multiply filter blur-xl opacity-20 float-animation" style="animation-delay: 2s;"></div>
-    <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-700 rounded-full mix-blend-multiply filter blur-xl opacity-20 float-animation" style="animation-delay: 4s;"></div>
-  </div>
+<body class="bg-gray-950 min-h-screen overflow-x-hidden" x-data>
+  <site-navigation></site-navigation>
 
-  <!-- Enhanced Navigation -->
-  <header class="fixed inset-x-0 top-0 z-50 bg-gray-900/90 border-b border-white/10" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between p-3 lg:p-4 lg:px-8" aria-label="Global">
-      <div class="flex lg:flex-1">
-        <a href="/" class="-m-1.5 p-1.5 group">
-          <span class="sr-only">The Breslov Yeshiva</span>
-          <img class="h-10 sm:h-12 lg:h-16 w-auto transition-transform group-hover:scale-110" src="logo-white.png" alt="The Breslov Yeshiva" />
-        </a>
-      </div>
-      <div class="flex space-x-2 sm:space-x-3 lg:space-x-4 lg:flex-1 lg:justify-end">
-        <a href="#donate"
-          class="text-xs sm:text-sm font-semibold leading-6 text-white py-1.5 px-3 sm:py-2 sm:px-4 lg:py-2 lg:px-6 rounded-full bg-gradient-to-r from-purple-600/80 to-pink-600/80 hover:from-purple-500 hover:to-pink-500 transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
-          Donate
-        </a>
-        <a href="#register"
-          class="text-xs sm:text-sm font-semibold leading-6 text-white py-1.5 px-3 sm:py-2 sm:px-4 lg:py-2 lg:px-6 rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 transition-all duration-300 shadow-lg hover:shadow-indigo-500/25">
-          <span class="hidden sm:inline">Register Now</span>
-          <span class="sm:hidden">Register</span>
-          <span aria-hidden="true" class="ml-1">→</span>
-        </a>
-      </div>
-    </nav>
-  </header>
-
-  <main class="relative">
+  <div class="site-main-shell min-h-screen">
+    <main class="relative">
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center px-6 pt-14 lg:px-8 overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center overflow-x-hidden px-6 pt-14 lg:px-8">
       <!-- Background Image Layer -->
       <div class="absolute inset-0 z-0">
         <img src="pic-bg.jpg" alt="Breslov Yeshiva students learning" class="w-full h-full object-cover opacity-40" />
@@ -277,15 +173,15 @@
       </div>
 
       <!-- Content Layer -->
-      <div class="relative z-10 mx-auto max-w-6xl">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="relative z-10 home-hero-shell">
+        <div class="home-hero-main grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <!-- Text Content -->
-          <div class="text-center lg:text-left">
-            <h1 class="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl mb-8 drop-shadow-2xl">
-              <span class="block mb-4">The Breslov Yeshiva</span>
-              <span class="gradient-text text-2xl sm:text-3xl lg:text-4xl font-light">Where Torah Meets Transformation</span>
+          <div class="min-w-0 text-center lg:text-left">
+            <h1 class="home-hero-title text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl mb-8 drop-shadow-2xl">
+              <span class="home-hero-title-main mb-4">The Breslov Yeshiva</span>
+              <span class="home-hero-title-subtitle gradient-text text-2xl sm:text-3xl lg:text-4xl font-light">Where Torah Meets Transformation</span>
             </h1>
-            <p class="mt-8 text-xl leading-8 text-gray-100 max-w-2xl mx-auto lg:mx-0 drop-shadow-lg">
+            <p class="home-hero-description mt-8 text-xl leading-8 text-gray-100 mx-auto lg:mx-0 drop-shadow-lg">
               An English-Speaking Yeshiva dedicated to healthy, balanced growth in Torah & Avodas Hashem,
               nurturing the next generation of inspired Torah scholars.
             </p>
@@ -301,114 +197,115 @@
           </div>
 
           <!-- Video Section -->
-          <div class="video-section" x-data="{ 
-  playing: false, 
-  pipEnabled: false,
-  async playVideo() {
-    this.playing = true;
-    await this.$nextTick();
-    const video = this.$refs.videoPlayer;
-    if (video) {
-      try {
-        await video.play();
-        this.setupPiP();
-      } catch (error) {
-        console.log('Video play failed:', error);
-      }
-    }
-  },
-  setupPiP() {
-    const video = this.$refs.videoPlayer;
-    if (!video || !document.pictureInPictureEnabled) return;
-    
-    // Set up Intersection Observer for PiP
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!video.paused && this.playing) {
-          if (entry.intersectionRatio < 0.5 && !this.pipEnabled) {
-            // Video is mostly out of view, enter PiP
-            this.enterPiP();
-          } else if (entry.intersectionRatio >= 0.5 && this.pipEnabled) {
-            // Video is back in view, exit PiP
-            this.exitPiP();
-          }
-        }
-      });
-    }, { threshold: [0.5] });
-    
-    observer.observe(video);
-    
-    // Clean up observer when video ends or is paused
-    video.addEventListener('ended', () => observer.disconnect());
-    video.addEventListener('pause', () => observer.disconnect());
-  },
-  async enterPiP() {
-    const video = this.$refs.videoPlayer;
-    if (video && !this.pipEnabled) {
-      try {
-        await video.requestPictureInPicture();
-        this.pipEnabled = true;
-      } catch (error) {
-        console.log('PiP failed:', error);
-      }
-    }
-  },
-  async exitPiP() {
-    if (this.pipEnabled && document.pictureInPictureElement) {
-      try {
-        await document.exitPictureInPicture();
-        this.pipEnabled = false;
-      } catch (error) {
-        console.log('Exit PiP failed:', error);
-      }
-    }
-  },
-  closeVideo() {
-    const video = this.$refs.videoPlayer;
-    if (video) {
-      video.pause();
-      if (this.pipEnabled) {
-        this.exitPiP();
-      }
-    }
-    this.playing = false;
-  }
-}">
-            <div class="video-container relative mx-auto max-w-lg">
-              <!-- Video Preview/Poster -->
-              <div x-show="!playing" class="relative">
-                <video class="w-full h-auto rounded-2xl"
-                  poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23374151'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23f3f4f6' font-family='Arial, sans-serif' font-size='14'%3EWatch Our Story%3C/text%3E%3C/svg%3E"
-                  muted preload="metadata">
-                  <source
-                    src="https://b313e8803f7a4150a884-6e0b076a1e92e31c40be44f466689c50.ssl.cf5.rackcdn.com/images/loginid204900/6166626634616134393431393166393735383063326464303931666531356636_31373438323730393436.mp4#t=0.001"
-                    type="video/mp4">
-                </video>
-                <div class="video-overlay"></div>
-                <div class="play-button" @click="playVideo()">
+          <div class="video-section min-w-0" x-data="heroVideoModal()" x-on:keydown.escape.window="closeVideoModal()">
+            <div class="video-container relative mx-auto">
+              <div class="vimeo-video-shell relative rounded-2xl bg-gray-800 shadow-2xl shadow-black/30" style="padding:56.25% 0 0 0;">
+                <iframe
+                  src="https://player.vimeo.com/video/1188735766?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;vimeo_logo=0&amp;autopause=0&amp;quality=4k&amp;initial_quality=4k&amp;max_quality=4k&amp;quality_selector=1&amp;player_id=0&amp;app_id=58479"
+                  frameborder="0"
+                  aria-hidden="true"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  class="pointer-events-none"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                  tabindex="-1"
+                  title="The Breslov Yeshiva"
+                ></iframe>
+                <button
+                  type="button"
+                  class="video-preview-trigger absolute inset-0 flex items-center justify-center rounded-2xl"
+                  aria-label="Play The Breslov Yeshiva video"
+                  @click="openVideoModal()"
+                >
+                  <span class="video-preview-play" aria-hidden="true">
+                    <svg class="ml-1 h-9 w-9" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <div
+              x-show="videoOpen"
+              x-cloak
+              class="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 px-4 py-8 backdrop-blur-sm sm:px-6"
+              role="dialog"
+              aria-modal="true"
+              aria-label="The Breslov Yeshiva video"
+              @click.self="closeVideoModal()"
+            >
+              <div class="relative w-full max-w-6xl">
+                <button
+                  type="button"
+                  class="absolute -top-14 right-0 rounded-full border border-white/20 bg-white/10 p-3 text-white transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-amber-300"
+                  aria-label="Close video"
+                  @click="closeVideoModal()"
+                >
+                  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+                <div class="relative overflow-hidden rounded-2xl bg-black shadow-2xl shadow-black/60" style="padding:56.25% 0 0 0;">
+                  <iframe
+                    x-bind:src="modalSrc"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                    title="The Breslov Yeshiva"
+                  ></iframe>
                 </div>
-              </div>
-
-              <!-- Full Video Player -->
-              <div x-show="playing" class="relative">
-                <video class="w-full h-auto rounded-2xl" controls x-ref="videoPlayer" @loadeddata="$refs.videoPlayer.play()">
-                  <source
-                    src="https://b313e8803f7a4150a884-6e0b076a1e92e31c40be44f466689c50.ssl.cf5.rackcdn.com/images/loginid204900/6166626634616134393431393166393735383063326464303931666531356636_31373438323730393436.mp4#t=0.001"
-                    type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <!-- Removed the close button -->
-              </div>
-
-              <!-- Video Caption -->
-              <div class="absolute -bottom-8 left-0 right-0 text-center">
-                <p class="text-sm text-gray-300 bg-black/30 backdrop-blur-sm rounded-full px-4 py-2 inline-block">
-                  Discover Our Community
-                </p>
               </div>
             </div>
           </div>
+
         </div>
+
+        <!-- Daily Schedule Widget -->
+        <aside
+          class="home-schedule-widget rounded-2xl border border-white/15 bg-gray-950/75 p-6 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-7"
+          x-data="homepageScheduleWidget()"
+          aria-labelledby="today-schedule-heading"
+        >
+            <div class="mb-6 flex items-start justify-between gap-4">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">Today</p>
+                <h2 id="today-schedule-heading" class="mt-1 text-3xl font-bold text-white">Yeshiva Schedule</h2>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-right">
+                <p class="text-xs font-semibold text-gray-400">Israel</p>
+                <p class="text-sm font-bold text-white" x-text="summary.dayName"></p>
+              </div>
+            </div>
+
+            <template x-if="summary.hasRegularSchedule">
+              <div class="space-y-4">
+                <template x-for="event in summary.events" :key="`${event.day}-${event.time}-${event.title}`">
+                  <div class="rounded-xl border border-white/10 bg-white/[0.07] p-4">
+                    <div class="mb-2 flex items-center gap-2">
+                      <span class="h-2 w-2 rounded-full" :class="categoryDot(event.category)"></span>
+                      <p class="text-xs font-bold uppercase tracking-wide text-gray-400" x-text="event.category"></p>
+                    </div>
+                    <p class="text-base font-semibold text-amber-200" x-text="event.time"></p>
+                    <h3 class="mt-1 text-lg font-bold leading-tight text-white" x-text="event.title"></h3>
+                    <p class="mt-1 text-base text-gray-300" x-text="event.instructor"></p>
+                  </div>
+                </template>
+              </div>
+            </template>
+
+            <template x-if="!summary.hasRegularSchedule">
+              <div class="rounded-xl border border-white/10 bg-white/[0.07] p-5">
+                <p class="text-xl font-bold text-white">No regular seder today</p>
+                <p class="mt-2 text-base leading-7 text-gray-300">
+                  The weekday schedule resumes on <span class="font-semibold text-amber-200" x-text="summary.nextRegularDay.name"></span>.
+                </p>
+              </div>
+            </template>
+
+            <a href="/schedule" class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-white px-5 py-4 text-base font-extrabold text-gray-950 transition hover:bg-amber-100">
+              View Full Schedule
+            </a>
+        </aside>
       </div>
 
       <div class="absolute bottom-10 left-1/2 -translate-x-1/2 scroll-indicator z-10">
@@ -547,189 +444,6 @@
       </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="mx-auto mt-32 max-w-7xl px-6 sm:mt-16 lg:px-8">
-      <div class=" lg:mx-0 text-center mx-auto">
-        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl gradient-text">Meet Our Rebbeim</h2>
-        <p class="mt-6 text-xl leading-8 text-gray-300">Learn from masters who embody the perfect balance of Torah scholarship and genuine avodas Hashem</p>
-      </div>
-
-      <div x-data="{rabbis: 
-[ 
-{name: 'Rabbi David Yisrael Kalmus', role:'Rosh Yeshiva, Rosh Mosad', image:'kalmus.jpg'},  
-{name: 'Rabbi Berel Simpser', role:'Rosh Yeshiva, CFO', image:'simpser.jpg'},
-{name: 'Rabbi Ben Tzion Rothman', role:'Maggid Shiur', image:'rothman.jpg'},
-{name: 'Rabbi Nissim Black', role:'Rebbe', image:'black.jpg'},
-{name: 'Rabbi Yehuda Kastel', role:'Mashgiach, Mentor', image:'yehuda.jpg'},
-{name: 'Rabbi Noam Elbaz', role:'Mentor, Rebbe', image:'elbaz.jpg'},
-]
-}" class="mt-16 grid max-w-5xl mx-auto grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <template x-for="rabbi in rabbis">
-          <div class="group relative">
-            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900/20 to-purple-900/20 backdrop-blur-sm p-6 border border-white/10 card-hover">
-              <img :src="rabbi.image" :alt="rabbi.name" class="mx-auto rounded-2xl aspect-square h-32 w-32 object-cover mb-4 ring-4 ring-white/20" :class="rabbi.name === 'Rabbi Yehuda Kastel' ? 'object-top' : ''" />
-              <h3 x-text="rabbi.name" class="text-xl font-semibold text-white text-center"></h3>
-              <p x-text="rabbi.role" class="text-center text-gray-300 mt-1"></p>
-            </div>
-          </div>
-        </template>
-      </div>
-    </section>
-
-    <!-- Schedule Section -->
-    <section id="schedule" class="mx-auto mt-32 max-w-7xl px-6 sm:mt-16 lg:px-8">
-      <div class="lg:mx-0 text-center mx-auto">
-        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl gradient-text py-2" style="line-height: 1.2;">Daily Schedule</h2>
-        <p class="mt-6 text-xl leading-8 text-gray-300">A structured day of Torah learning and spiritual growth</p>
-      </div>
-
-      <div class="mt-16 max-w-5xl mx-auto">
-        <!-- Morning Seder -->
-        <div class="mb-12 bg-gradient-to-br from-indigo-900/20 to-blue-900/20 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-          <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
-            <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-xl flex items-center justify-center mr-4">
-              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
-              </svg>
-            </div>
-            Morning Seder
-            <span class="text-sm font-normal text-gray-400 ml-2">(Sunday thru Thursday)</span>
-          </h3>
-          
-          <div class="space-y-4">
-            <div class="flex items-center p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div class="w-20 h-16 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-xl flex items-center justify-center mr-4">
-                <span class="text-white font-semibold text-sm">9:30<br/>10:30</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold">Likutey Halachos</h4>
-                <p class="text-gray-300">with R' Eliyahu Pinczower</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div class="w-20 h-16 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-xl flex items-center justify-center mr-4">
-                <span class="text-white font-semibold text-sm">10:30<br/>11:45</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold">Gemara Prep</h4>
-                <p class="text-gray-300">Facilitators - R' Yehuda Kastel & R' Noam Elbaz</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div class="w-20 h-16 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-xl flex items-center justify-center mr-4">
-                <span class="text-white font-semibold text-sm">12:00<br/>12:30</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold">TaNaCh</h4>
-                <p class="text-gray-300">with R' Shaya Sussman</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center p-4 rounded-2xl bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20">
-              <div class="w-20 h-16 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-xl flex items-center justify-center mr-4">
-                <span class="text-amber-200 font-semibold text-sm">12:30<br/>2:00</span>
-              </div>
-              <div>
-                <h4 class="text-amber-100 font-semibold">Afternoon / Lunch Break</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Afternoon Seder - Sunday, Tuesday, Thursday -->
-        <div class="mb-12 bg-gradient-to-br from-emerald-900/20 to-teal-900/20 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-          <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
-            <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mr-4">
-              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
-              </svg>
-            </div>
-            Afternoon Seder
-            <span class="text-sm font-normal text-gray-400 ml-2">(Sunday, Tuesday, Thursday)</span>
-          </h3>
-          
-          <div class="space-y-4">
-            <div class="flex items-center p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div class="w-20 h-16 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-xl flex items-center justify-center mr-4">
-                <span class="text-white font-semibold text-sm">2:00<br/>3:00</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold">Gemara Shiur</h4>
-                <p class="text-gray-300">with R' Eli Simkin</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div class="w-20 h-16 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-xl flex items-center justify-center mr-4">
-                <span class="text-white font-semibold text-sm">3:00<br/>4:00</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold">Likutey Moharan</h4>
-                <p class="text-gray-300">with R' David Yisrael Kalmus</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div class="w-20 h-16 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-xl flex items-center justify-center mr-4">
-                <span class="text-white font-semibold text-sm">4:00<br/>5:00</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold">Chabura with the Mashgiach</h4>
-                <p class="text-gray-300">R' Yehuda Kastel</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Afternoon Seder - Monday & Wednesday -->
-        <div class="mb-12 bg-gradient-to-br from-violet-900/20 to-purple-900/20 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-          <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
-            <div class="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-500 rounded-xl flex items-center justify-center mr-4">
-              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
-              </svg>
-            </div>
-            Afternoon Seder
-            <span class="text-sm font-normal text-gray-400 ml-2">(Monday & Wednesday)</span>
-          </h3>
-          
-          <div class="space-y-4">
-            <div class="flex items-center p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div class="w-20 h-16 bg-gradient-to-br from-violet-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mr-4">
-                <span class="text-white font-semibold text-sm">2:00<br/>3:00</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold">Gemara Shiur</h4>
-                <p class="text-gray-300">with R' Eli Simkin</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div class="w-20 h-16 bg-gradient-to-br from-violet-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mr-4">
-                <span class="text-white font-semibold text-sm">3:00<br/>4:00</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold">Likutey Moharan</h4>
-                <p class="text-gray-300">with R' BenTzion Rothman</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div class="w-20 h-16 bg-gradient-to-br from-violet-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mr-4">
-                <span class="text-white font-semibold text-sm">4:00<br/>5:00</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold">Living Breslov</h4>
-                <p class="text-gray-300">with R' Nissim Black</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Rav Kivak Section -->
     <section class="mx-auto mt-32 max-w-7xl px-6 sm:mt-12 lg:px-8">
       <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-900/30 to-indigo-900/30 backdrop-blur-sm">
@@ -751,130 +465,6 @@
                 Breslov teachings, and created thriving communities that continue to inspire spiritual seekers globally. The Breslov
                 Yeshiva is privileged to operate under his direct guidance and blessing.
               </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Donate Section -->
-    <section id="donate" class="mx-auto mt-32 max-w-7xl px-6 sm:mt-20 lg:px-8 py-16">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl gradient-text">Partner in Our Mission</h2>
-        <p class="mt-6 text-xl leading-8 text-gray-300">Your support enables us to continue transforming lives through authentic Torah education</p>
-      </div>
-
-      <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div class="bg-gradient-to-br from-indigo-900/20 to-purple-900/20 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-          <h3 class="text-2xl font-bold text-white mb-6">Make a Difference</h3>
-          <p class="text-gray-300 mb-8">Every contribution helps us provide scholarships, enhance our learning programs, and maintain our beautiful facility.</p>
-
-          <div x-data="{ showPayPal: false }" class="space-y-4">
-            <a href="https://donate.stripe.com/fZebL4dC66aQaHe144" target="_blank" rel="noopener noreferrer"
-              class="flex items-center p-4 rounded-2xl bg-white/10 hover:bg-white/20 transition-all duration-300 group border border-white/10">
-              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center">
-                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
-                </svg>
-              </div>
-              <span class="ml-4 text-lg font-semibold text-white group-hover:text-gray-100">Credit Card (Stripe)</span>
-              <svg class="ml-auto w-5 h-5 text-gray-400 group-hover:text-white transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-
-            <a href="https://cash.app/$TBYeshiva" target="_blank" rel="noopener noreferrer"
-              class="flex items-center p-4 rounded-2xl bg-white/10 hover:bg-white/20 transition-all duration-300 group border border-white/10">
-              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
-                <span class="text-white font-bold text-xl">$</span>
-              </div>
-              <span class="ml-4 text-lg font-semibold text-white group-hover:text-gray-100">Cash App</span>
-              <svg class="ml-auto w-5 h-5 text-gray-400 group-hover:text-white transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-
-            <a href="https://venmo.com/TheBreslov-Yeshiva" target="_blank" rel="noopener noreferrer"
-              class="flex items-center p-4 rounded-2xl bg-white/10 hover:bg-white/20 transition-all duration-300 group border border-white/10">
-              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                <span class="text-white font-bold text-xl">V</span>
-              </div>
-              <span class="ml-4 text-lg font-semibold text-white group-hover:text-gray-100">Venmo</span>
-              <svg class="ml-auto w-5 h-5 text-gray-400 group-hover:text-white transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-
-            <!-- PayPal Dropdown Button -->
-            <div class="border border-white/10 rounded-2xl overflow-hidden bg-white/10">
-              <button @click="showPayPal = !showPayPal" class="w-full flex items-center p-4 hover:bg-white/20 transition-all duration-300 group">
-                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center">
-                  <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a9.124 9.124 0 0 1-.414 2.06c-1.147 5.632-5.05 7.626-9.75 7.626h-2.353c-.524 0-.968.382-1.05.9L6.333 21.337H4.47a.641.641 0 0 1-.633-.74L6.944.901C7.026.382 7.474 0 7.998 0h7.46c2.57 0 4.578.543 5.69 1.81.344.393.62.82.833 1.28.559 1.205.629 2.67.241 4.327z" />
-                  </svg>
-                </div>
-                <span class="ml-4 text-lg font-semibold text-white group-hover:text-gray-100">PayPal</span>
-                <svg class="ml-auto w-5 h-5 text-gray-400 group-hover:text-white transition-transform duration-300" :class="showPayPal ? 'rotate-180' : ''" fill="none" stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </button>
-
-              <!-- PayPal Form Dropdown -->
-              <div x-show="showPayPal" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2"
-                x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-y-0"
-                x-transition:leave-end="opacity-0 transform -translate-y-2" class="border-t border-white/10 bg-white/5 backdrop-blur-sm p-6">
-
-                <!-- PayPal Donation Form -->
-                <div class="bg-white/30 rounded p-6 border border-white/10">
-
-                  <!-- Actual PayPal Integration (Hidden for demo) -->
-                  <div class="">
-                    <div id="paypal-container-MWUP5A2ENS4B4"></div>
-                    <script>
-                      if (typeof paypal !== 'undefined') {
-                        paypal.HostedButtons({
-                          hostedButtonId: "MWUP5A2ENS4B4",
-                        }).render("#paypal-container-MWUP5A2ENS4B4")
-                      }
-                    </script>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-          <h3 class="text-2xl font-bold text-white mb-6">Your Impact</h3>
-          <div class="space-y-6">
-            <div class="flex items-start space-x-4">
-              <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                <span class="text-purple-400 font-bold">1</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold mb-1">Enable Torah Learning</h4>
-                <p class="text-gray-400 text-sm">Support daily shiurim and chavrusa learning programs</p>
-              </div>
-            </div>
-            <div class="flex items-start space-x-4">
-              <div class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center flex-shrink-0">
-                <span class="text-pink-400 font-bold">2</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold mb-1">Provide Scholarships</h4>
-                <p class="text-gray-400 text-sm">Help dedicated students who need financial assistance</p>
-              </div>
-            </div>
-            <div class="flex items-start space-x-4">
-              <div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0">
-                <span class="text-indigo-400 font-bold">3</span>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold mb-1">Build the Future</h4>
-                <p class="text-gray-400 text-sm">Invest in the next generation of Torah leaders</p>
-              </div>
             </div>
           </div>
         </div>
@@ -941,12 +531,17 @@
     <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-between">
         <div class="flex items-center space-x-4 mb-4 md:mb-0">
-          <img class="h-12 w-auto" src="logo-white.png" alt="The Breslov Yeshiva" />
+          <img class="h-12 w-auto" src="yeshiva-logo-web.png" alt="Yeshivas Uvacharta Bachayim" width="1600" height="785" decoding="async" />
           <div class="text-sm text-gray-400">
-            <p>&copy; 2025 The Breslov Yeshiva</p>
+            <p>&copy; 2026 The Breslov Yeshiva</p>
             <p>Nurturing Torah Scholars Since Our Founding</p>
           </div>
         </div>
+        <nav class="mb-4 flex flex-wrap justify-center gap-4 text-sm text-gray-400 md:mb-0" aria-label="Legal footer">
+          <a href="/privacy" class="hover:text-white">Privacy</a>
+          <a href="/terms" class="hover:text-white">Terms</a>
+          <a href="/accessibility" class="hover:text-white">Accessibility</a>
+        </nav>
         <div class="text-sm text-gray-400 text-center md:text-right">
           <p class="font-semibold text-gray-300">Location</p>
           <p>32 Nachal Lachish</p>
@@ -955,6 +550,47 @@
       </div>
     </div>
   </footer>
+  </div>
+  <script>
+    function heroVideoModal() {
+      const modalUrl = 'https://player.vimeo.com/video/1188735766?title=0&byline=0&portrait=0&badge=0&vimeo_logo=0&autopause=0&autoplay=1&quality=4k&initial_quality=4k&max_quality=4k&quality_selector=1&player_id=0&app_id=58479';
+
+      return {
+        videoOpen: false,
+        modalSrc: '',
+        openVideoModal() {
+          this.modalSrc = modalUrl;
+          this.videoOpen = true;
+          document.body.classList.add('video-modal-open');
+        },
+        closeVideoModal() {
+          this.videoOpen = false;
+          this.modalSrc = '';
+          document.body.classList.remove('video-modal-open');
+        }
+      };
+    }
+
+    function homepageScheduleWidget() {
+      const fallbackSummary = {
+        dayName: 'Today',
+        events: [],
+        hasRegularSchedule: false,
+        nextRegularDay: { id: 'sun', name: 'Sunday' }
+      };
+
+      return {
+        summary: window.TBYSchedule ? window.TBYSchedule.getTodaySummary() : fallbackSummary,
+        categoryDot(category) {
+          return window.TBYSchedule?.categoryStyles[category]?.dot || 'bg-gray-400';
+        }
+      };
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
 </body>
 
 </html>

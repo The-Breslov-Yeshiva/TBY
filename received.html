@@ -6,7 +6,7 @@
   <meta property="og:title" content="The Breslov Yeshiva" />
   <meta name="og:description" content="An English-Speaking Yeshiva Dedicated to Healthy, Balanced Growth in Torah & Avodas Hashem">
   <meta name="og:keywords" content="Yeshiva, Breslov, Israel, Jerusalem, Torah, Talmud, Chassidus">
-  <meta property="og:image" content="https://www.thebreslovyeshiva.com/tby-meta-image.jpg" />
+  <meta property="og:image" content="https://www.thebreslovyeshiva.com/yeshiva-logo-og.jpg" />
   <title>The Breslov Yeshiva | Submission Received</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -17,6 +17,7 @@
   <meta name="theme-color" content="#0F004B">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="navigation.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
     @keyframes float {
@@ -136,6 +137,8 @@
 </head>
 
 <body class="bg-gray-950 min-h-screen overflow-x-hidden">
+  <site-navigation></site-navigation>
+
   <!-- Animated background -->
   <div class="fixed inset-0 -z-10">
     <div class="absolute inset-0 bg-gradient-to-br from-indigo-950 via-gray-900 to-purple-950"></div>
@@ -145,29 +148,7 @@
     <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-700 rounded-full mix-blend-multiply filter blur-xl opacity-20 float-animation" style="animation-delay: 4s;"></div>
   </div>
 
-  <!-- Enhanced Navigation -->
-  <header class="fixed inset-x-0 top-0 z-50 backdrop-blur-lg bg-gray-900/70 border-b border-white/10">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Global">
-      <div class="flex lg:flex-1">
-        <a href="/" class="-m-1.5 p-1.5 group">
-          <span class="sr-only">The Breslov Yeshiva</span>
-          <img class="h-16 w-auto transition-transform group-hover:scale-110" src="logo-white.png" alt="The Breslov Yeshiva" />
-        </a>
-      </div>
-      <div class="flex space-x-4 lg:flex-1 lg:justify-end">
-        <a href="/#donate"
-          class="text-sm font-semibold leading-6 text-white py-2 px-6 rounded-full bg-gradient-to-r from-purple-600/80 to-pink-600/80 hover:from-purple-500 hover:to-pink-500 transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
-          Donate
-        </a>
-        <a href="/#register"
-          class="text-sm font-semibold leading-6 text-white py-2 px-6 rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 transition-all duration-300 shadow-lg hover:shadow-indigo-500/25">
-          Register Now <span aria-hidden="true" class="ml-1">→</span>
-        </a>
-      </div>
-    </nav>
-  </header>
-
-  <main class="relative">
+  <main class="site-main-shell relative">
     <!-- Success Section -->
     <section class="relative min-h-screen flex items-center justify-center px-6 pt-32 lg:px-8">
       <div class="relative z-10 mx-auto max-w-4xl text-center">
@@ -175,8 +156,8 @@
         <div class="mb-12 flex justify-center">
           <div class="relative">
             <div class="w-32 h-32 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center pulse-ring shadow-2xl">
-              <svg class="w-16 h-16 text-white checkmark-circle" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
+              <svg class="w-16 h-16 text-white checkmark-circle" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>
             <!-- Floating particles around success icon -->
@@ -211,17 +192,21 @@
   </main>
 
   <!-- Footer -->
-  <footer class="relative border-t border-white/10 bg-gray-950/50 backdrop-blur-lg">
+  <footer class="site-main-shell relative border-t border-white/10 bg-gray-950/50 backdrop-blur-lg">
     <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between">
+      <div class="flex flex-col gap-4 md:flex-row items-center justify-between">
         <div class="flex items-center space-x-4 mb-4 md:mb-0">
-          <img class="h-12 w-auto" src="logo-white.png" alt="The Breslov Yeshiva" />
+          <img class="h-12 w-auto" src="yeshiva-logo-web.png" alt="Yeshivas Uvacharta Bachayim" width="1600" height="785" decoding="async" />
           <div class="text-sm text-gray-400">
-            <p>&copy; 2025 The Breslov Yeshiva</p>
+            <p>&copy; 2026 The Breslov Yeshiva</p>
             <p>Nurturing Torah Scholars Since Our Founding</p>
           </div>
         </div>
-
+        <nav class="flex flex-wrap justify-center gap-4 text-sm text-gray-400" aria-label="Legal footer">
+          <a href="/privacy" class="hover:text-white">Privacy</a>
+          <a href="/terms" class="hover:text-white">Terms</a>
+          <a href="/accessibility" class="hover:text-white">Accessibility</a>
+        </nav>
       </div>
     </div>
   </footer>
