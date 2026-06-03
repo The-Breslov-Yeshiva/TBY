@@ -22,25 +22,6 @@ export type ShowcaseItem = {
 
 export const showcaseItems: ShowcaseItem[] = [
   {
-    id: "beis-midrash-morning",
-    title: "Morning in the Beis Midrash",
-    eyebrow: "A day begins with clarity",
-    category: "Learning",
-    date: "2026-05-01",
-    energy: 82,
-    src: "/pic-bg.jpg",
-    webp: "/gallery-pic-bg.webp",
-    full: "/pic-bg.jpg",
-    width: 1478,
-    height: 718,
-    alt: "Students learning in the yeshiva beis midrash",
-    description: "The room settles into the steady rhythm of chavrusa learning and focused growth.",
-    story: "A quiet morning frame where structure, warmth, and serious learning become the atmosphere of the day.",
-    focalPoint: "50% 45%",
-    ctaLabel: "Enter the morning",
-    keywords: "learning beis midrash morning chavrusa"
-  },
-  {
     id: "focused-growth",
     title: "Focused Growth",
     eyebrow: "The work beneath the surface",
@@ -58,25 +39,6 @@ export const showcaseItems: ShowcaseItem[] = [
     focalPoint: "48% 44%",
     ctaLabel: "See the focus",
     keywords: "torah learning focus students"
-  },
-  {
-    id: "community-table",
-    title: "Community at the Table",
-    eyebrow: "Growth needs a home",
-    category: "Community",
-    date: "2026-04-19",
-    energy: 74,
-    src: "/pic-right.jpg",
-    webp: "/gallery-pic-right.webp",
-    full: "/pic-right.jpg",
-    width: 740,
-    height: 741,
-    alt: "Yeshiva students sitting together",
-    description: "The informal moments that turn a group of talmidim into a real community.",
-    story: "Between shiurim and sedarim, the yeshiva breathes through friendship, shared meals, and honest conversation.",
-    focalPoint: "50% 48%",
-    ctaLabel: "Feel the community",
-    keywords: "community connection talmidim"
   },
   {
     id: "tziyun-visit",

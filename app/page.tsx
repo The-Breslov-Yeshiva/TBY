@@ -22,7 +22,7 @@ export default function HomePage() {
     <main className="relative">
       <section className="relative min-h-screen overflow-hidden px-4 pb-24 pt-32 sm:px-6 sm:pt-36 lg:px-8 xl:pt-36">
         <div className="absolute inset-0 z-0">
-          <img src="/pic-bg.jpg" alt="Breslov Yeshiva students learning" className="h-full w-full object-cover opacity-40" />
+          <img src="/about-hero-tree-group.jpg" alt="The Breslov Yeshiva talmidim gathered under a tree overlooking the hills" className="h-full w-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-950/92 via-gray-950/68 to-gray-950/75" />
         </div>
 
