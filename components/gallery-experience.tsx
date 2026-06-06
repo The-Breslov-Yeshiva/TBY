@@ -4,12 +4,13 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Search, X, ZoomIn } from "lucide-react";
 import { useMemo, useState } from "react";
-import { categories, showcaseItems } from "@/data/media";
+import { albums, categories, showcaseItems } from "@/data/media";
 import type { ShowcaseItem } from "@/data/media";
 import { cn } from "@/lib/utils";
 
 export function GalleryExperience() {
   const [filter, setFilter] = useState<(typeof categories)[number]>("All");
+  const [album, setAlbum] = useState<(typeof albums)[number]>("All Albums");
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("curated");
   const [active, setActive] = useState<ShowcaseItem | null>(null);
@@ -19,8 +20,9 @@ export function GalleryExperience() {
     const normalized = query.trim().toLowerCase();
     const filtered = showcaseItems.filter((item) => {
       const matchesCategory = filter === "All" || item.category === filter;
-      const matchesQuery = !normalized || `${item.title} ${item.category} ${item.description} ${item.keywords}`.toLowerCase().includes(normalized);
-      return matchesCategory && matchesQuery;
+      const matchesAlbum = album === "All Albums" || item.album === album;
+      const matchesQuery = !normalized || `${item.title} ${item.category} ${item.album} ${item.description} ${item.keywords}`.toLowerCase().includes(normalized);
+      return matchesCategory && matchesAlbum && matchesQuery;
     });
 
     return [...filtered].sort((a, b) => {
@@ -28,7 +30,7 @@ export function GalleryExperience() {
       if (sort === "energy") return b.energy - a.energy;
       return showcaseItems.indexOf(a) - showcaseItems.indexOf(b);
     });
-  }, [filter, query, sort]);
+  }, [album, filter, query, sort]);
 
   const activeIndex = active ? items.findIndex((item) => item.id === active.id) : -1;
   const move = (direction: number) => {
@@ -53,45 +55,64 @@ export function GalleryExperience() {
           <div className="premium-card grid grid-cols-3 gap-3 rounded-3xl p-5">
             <Stat value={String(showcaseItems.length).padStart(2, "0")} label="Moments" />
             <Stat value={String(categories.length - 1).padStart(2, "0")} label="Themes" />
-            <Stat value="4K" label="Source-first" />
+            <Stat value={String(albums.length - 1).padStart(2, "0")} label="Albums" />
           </div>
         </div>
       </section>
 
       <section className="section-pad mx-auto max-w-[96rem]">
         <div className="nav-sticky-offset sticky z-20 mb-8 rounded-3xl border border-white/10 bg-gray-950/78 p-3 shadow-cinematic backdrop-blur-2xl">
-          <div className="grid gap-3 lg:grid-cols-[1fr_auto_auto] lg:items-center">
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
+          <div className="grid gap-3">
+            <div className="grid gap-3 lg:grid-cols-[1fr_auto_auto] lg:items-center">
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => setFilter(category)}
+                    className={cn(
+                      "rounded-full px-4 py-2 text-sm font-black transition",
+                      filter === category ? "bg-white text-gray-950" : "bg-white/8 text-gray-200 hover:bg-white/14"
+                    )}
+                    aria-pressed={filter === category}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+              <label className="relative block min-w-0">
+                <span className="sr-only">Search gallery</span>
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                <input
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Search moments"
+                  className="h-11 w-full rounded-full border border-white/10 bg-white/8 pl-11 pr-4 text-sm font-bold text-white placeholder:text-gray-500 lg:w-64"
+                />
+              </label>
+              <select value={sort} onChange={(event) => setSort(event.target.value)} className="h-11 rounded-full border border-white/10 bg-gray-950 px-4 text-sm font-bold text-white">
+                <option value="curated">Curated</option>
+                <option value="newest">Newest</option>
+                <option value="energy">Energy</option>
+              </select>
+            </div>
+            <div className="flex gap-2 overflow-x-auto border-t border-white/10 pt-3" role="tablist" aria-label="Gallery albums">
+              {albums.map((albumName) => (
                 <button
-                  key={category}
+                  key={albumName}
                   type="button"
-                  onClick={() => setFilter(category)}
+                  onClick={() => setAlbum(albumName)}
                   className={cn(
-                    "rounded-full px-4 py-2 text-sm font-black transition",
-                    filter === category ? "bg-white text-gray-950" : "bg-white/8 text-gray-200 hover:bg-white/14"
+                    "shrink-0 rounded-full px-4 py-2 text-sm font-black transition",
+                    album === albumName ? "bg-amber-200 text-gray-950" : "bg-white/8 text-gray-200 hover:bg-white/14"
                   )}
-                  aria-pressed={filter === category}
+                  role="tab"
+                  aria-selected={album === albumName}
                 >
-                  {category}
+                  {albumName}
                 </button>
               ))}
             </div>
-            <label className="relative block min-w-0">
-              <span className="sr-only">Search gallery</span>
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-              <input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search moments"
-                className="h-11 w-full rounded-full border border-white/10 bg-white/8 pl-11 pr-4 text-sm font-bold text-white placeholder:text-gray-500 lg:w-64"
-              />
-            </label>
-            <select value={sort} onChange={(event) => setSort(event.target.value)} className="h-11 rounded-full border border-white/10 bg-gray-950 px-4 text-sm font-bold text-white">
-              <option value="curated">Curated</option>
-              <option value="newest">Newest</option>
-              <option value="energy">Energy</option>
-            </select>
           </div>
         </div>
 
@@ -140,8 +161,9 @@ export function GalleryExperience() {
                   <Dialog.Close className="absolute right-5 top-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20" aria-label="Close image">
                     <X className="h-5 w-5" />
                   </Dialog.Close>
-                  <p className="page-kicker">{active.category}</p>
+                  <p className="page-kicker">{active.album}</p>
                   <h3 className="mt-5 pr-12 text-4xl font-black text-white">{active.title}</h3>
+                  <p className="mt-3 text-sm font-black uppercase tracking-[0.16em] text-amber-200">{active.category}</p>
                   <p className="mt-5 text-lg leading-8 text-gray-300">{active.story}</p>
                   <div className="mt-8 flex gap-3">
                     <button type="button" onClick={() => move(-1)} className="rounded-full border border-white/15 bg-white/8 px-5 py-3 text-sm font-bold text-white hover:bg-white/14">Previous</button>
@@ -187,7 +209,7 @@ function GalleryCard({ item, index, open, reduced }: { item: ShowcaseItem; index
       aria-label={`Open ${item.title}`}
     >
       <picture>
-        <source srcSet={item.webp} type="image/webp" />
+        {item.webp ? <source srcSet={item.webp} type="image/webp" /> : null}
         <img
           src={item.full}
           alt={item.alt}
@@ -202,7 +224,7 @@ function GalleryCard({ item, index, open, reduced }: { item: ShowcaseItem; index
       </picture>
       <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/12 to-transparent opacity-100 md:opacity-0 md:transition md:group-hover:opacity-100" />
       <span className="absolute bottom-0 left-0 right-0 p-4 md:translate-y-3 md:opacity-0 md:transition md:group-hover:translate-y-0 md:group-hover:opacity-100">
-        <span className="text-xs font-black uppercase tracking-[0.16em] text-amber-200">{item.category}</span>
+        <span className="text-xs font-black uppercase tracking-[0.16em] text-amber-200">{item.album}</span>
         <span className="mt-1 block text-lg font-black text-white">{item.title}</span>
       </span>
       <span className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/28 text-white backdrop-blur-md">

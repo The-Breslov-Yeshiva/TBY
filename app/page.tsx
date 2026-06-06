@@ -4,7 +4,7 @@ import { HeroVideo } from "@/components/hero-video";
 import { HomeSchedule } from "@/components/home-schedule";
 import { LivingShowcase } from "@/components/showcase/living-showcase";
 import { getTodaySummary } from "@/data/schedule";
-import { showRabbiKivakGuidanceSection } from "@/data/site-flags";
+import { showHomeScheduleWidget, showRabbiKivakGuidanceSection } from "@/data/site-flags";
 
 const features = [
   { title: "Torah Excellence", copy: "A strong foundation in Gemara and Halacha with experienced maggidei shiur.", icon: BookOpen },
@@ -52,13 +52,15 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto mt-10 w-full max-w-2xl xl:absolute xl:right-8 xl:top-[26rem] xl:mx-0 xl:mt-0 xl:w-[19rem] xl:max-w-none xl:-translate-x-12 2xl:right-10 2xl:top-[27rem] 2xl:w-[20rem] min-[1800px]:!right-12 min-[1800px]:!top-[25.75rem]">
-          <HomeSchedule
-            initialSummary={initialScheduleSummary}
-            variant="hero"
-            className="w-full"
-          />
-        </div>
+        {showHomeScheduleWidget ? (
+          <div className="relative z-10 mx-auto mt-10 w-full max-w-2xl xl:absolute xl:right-8 xl:top-[26rem] xl:mx-0 xl:mt-0 xl:w-[19rem] xl:max-w-none xl:-translate-x-12 2xl:right-10 2xl:top-[27rem] 2xl:w-[20rem] min-[1800px]:!right-12 min-[1800px]:!top-[25.75rem]">
+            <HomeSchedule
+              initialSummary={initialScheduleSummary}
+              variant="hero"
+              className="w-full"
+            />
+          </div>
+        ) : null}
       </section>
 
       <LivingShowcase />

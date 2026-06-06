@@ -5,6 +5,7 @@
     "dev": "next dev",
     "serve": "next dev",
     "build": "next build",
+    "gallery:sync": "node scripts/sync-gallery-assets.mjs",
     "typecheck": "tsc --noEmit",
     "typewriter:check": "npm run typecheck",
     "lint": "eslint .",

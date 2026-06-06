@@ -1,14 +1,17 @@
+import { galleryArchiveItems } from "./gallery-archive";
+
 export type MediaCategory = "Learning" | "Community" | "Daily Life";
 
 export type ShowcaseItem = {
   id: string;
   title: string;
   eyebrow: string;
+  album: string;
   category: MediaCategory;
   date: string;
   energy: number;
   src: string;
-  webp: string;
+  webp?: string;
   full: string;
   width: number;
   height: number;
@@ -20,11 +23,12 @@ export type ShowcaseItem = {
   keywords: string;
 };
 
-export const showcaseItems: ShowcaseItem[] = [
+export const featuredShowcaseItems: ShowcaseItem[] = [
   {
     id: "focused-growth",
     title: "Focused Growth",
     eyebrow: "The work beneath the surface",
+    album: "Featured",
     category: "Learning",
     date: "2026-04-25",
     energy: 64,
@@ -41,28 +45,10 @@ export const showcaseItems: ShowcaseItem[] = [
     keywords: "torah learning focus students"
   },
   {
-    id: "tziyun-visit",
-    title: "At the Tziyun",
-    eyebrow: "A moment of connection",
-    category: "Community",
-    date: "2026-04-15",
-    energy: 78,
-    src: "/gallery-tziyun-visit.jpg",
-    webp: "/gallery-tziyun-visit.webp",
-    full: "/gallery-tziyun-visit.jpg",
-    width: 3840,
-    height: 5120,
-    alt: "Yeshiva students and rabbeim gathered at the tziyun of Rebbe Nachman",
-    description: "A group moment at the tziyun, carrying the yeshiva's learning into tefillah and connection.",
-    story: "The yeshiva experience extends beyond the beis midrash into moments of tefillah, connection, and shared purpose.",
-    focalPoint: "50% 42%",
-    ctaLabel: "Open the moment",
-    keywords: "community tziyun rebbe nachman travel tefillah gathering"
-  },
-  {
     id: "torah-avodah-simcha",
     title: "Torah, Avodah, Simcha",
     eyebrow: "A balanced path",
+    album: "Featured",
     category: "Daily Life",
     date: "2026-04-08",
     energy: 88,
@@ -82,6 +68,7 @@ export const showcaseItems: ShowcaseItem[] = [
     id: "quiet-study",
     title: "Quiet Study",
     eyebrow: "Stillness has a sound",
+    album: "Featured",
     category: "Daily Life",
     date: "2026-03-28",
     energy: 42,
@@ -99,4 +86,29 @@ export const showcaseItems: ShowcaseItem[] = [
   }
 ];
 
+export const directedShowcaseItems: ShowcaseItem[] = [
+  {
+    id: "at-the-tziyun",
+    title: "At the Tziyun",
+    eyebrow: "A moment of connection",
+    album: "Directed Photos",
+    category: "Community",
+    date: "2025-11-20",
+    energy: 78,
+    src: "/directed-photos/at-the-tziyun-4k.jpg",
+    webp: "/directed-photos/at-the-tziyun-4k.webp",
+    full: "/directed-photos/at-the-tziyun-4k.jpg",
+    width: 3840,
+    height: 5120,
+    alt: "Yeshiva students and rabbeim gathered at the tziyun of Rebbe Nachman",
+    description: "A group moment at the tziyun, carrying the yeshiva's learning into tefillah and connection.",
+    story: "The yeshiva experience extends beyond the beis midrash into moments of tefillah, connection, and shared purpose.",
+    focalPoint: "50% 42%",
+    ctaLabel: "Open the moment",
+    keywords: "community tziyun rebbe nachman travel tefillah gathering directed photos"
+  }
+];
+
+export const showcaseItems: ShowcaseItem[] = [...featuredShowcaseItems, ...directedShowcaseItems, ...galleryArchiveItems];
 export const categories = ["All", ...Array.from(new Set(showcaseItems.map((item) => item.category)))] as const;
+export const albums = ["All Albums", ...Array.from(new Set(showcaseItems.map((item) => item.album)))] as const;

@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, ExternalLink, Maximize2, Sparkles, X } from "luc
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { showcaseItems, type ShowcaseItem } from "@/data/media";
+import { featuredShowcaseItems as showcaseItems, type ShowcaseItem } from "@/data/media";
 import { cn } from "@/lib/utils";
 
 const SHOWCASE_HOVER_DELAY_MS = 2000;
@@ -441,7 +441,7 @@ function ShowcasePlane({
     >
       <span className="media-frame block aspect-[4/5] w-full sm:aspect-[5/4]">
         <picture>
-          <source srcSet={item.webp} type="image/webp" />
+          {item.webp ? <source srcSet={item.webp} type="image/webp" /> : null}
           <img
             src={item.src}
             alt={item.alt}

@@ -18,10 +18,14 @@ export function SiteNavigation() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-gray-950/72 backdrop-blur-2xl">
-      <div className="mx-auto flex h-32 max-w-[92rem] items-center justify-between gap-5 px-4 sm:px-6 lg:h-[10.5rem] lg:px-8 xl:h-48">
-        <Link href="/" className="flex min-w-0 items-center" aria-label="The Breslov Yeshiva home">
+      <div className="relative mx-auto flex h-32 max-w-[92rem] items-center justify-between gap-5 px-4 sm:px-6 lg:h-[10.5rem] lg:px-8 xl:h-48">
+        <Link href="/" className="absolute left-4 top-1/2 z-10 flex min-w-0 -translate-y-1/2 items-center gap-3 sm:left-6 sm:gap-4 lg:left-[clamp(-13rem,calc((100vw-92rem)/-2+1rem),1rem)]" aria-label="The Breslov Yeshiva home">
+          <img src="/breslov-logo-gold-cutout.png" alt="The Breslov Yeshiva" className="h-24 w-auto max-w-[21rem] object-contain sm:max-w-[27rem] lg:h-[7.5rem] lg:max-w-[33rem] xl:h-36 xl:max-w-[36rem]" />
           <img src={site.logo} alt={site.logoAlt} className="h-24 w-auto max-w-[21rem] object-contain sm:max-w-[27rem] lg:h-[7.5rem] lg:max-w-[33rem] xl:h-36 xl:max-w-[36rem]" />
         </Link>
+        <div className="pointer-events-none invisible flex min-w-0 items-center" aria-hidden="true">
+          <img src={site.logo} alt="" className="h-24 w-auto max-w-[21rem] object-contain sm:max-w-[27rem] lg:h-[7.5rem] lg:max-w-[33rem] xl:h-36 xl:max-w-[36rem]" />
+        </div>
 
         <nav className="hidden items-center gap-7 text-base font-extrabold text-gray-200 lg:flex" aria-label="Primary navigation">
           {primaryNavigation.map((item) => (
