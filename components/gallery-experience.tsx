@@ -3,7 +3,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Search, X, ZoomIn } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { albums, categories, showcaseItems } from "@/data/media";
 import type { ShowcaseItem } from "@/data/media";
 import { cn } from "@/lib/utils";
@@ -38,6 +38,29 @@ export function GalleryExperience() {
     const index = activeIndex < 0 ? 0 : activeIndex;
     setActive(items[(index + direction + items.length) % items.length]);
   };
+
+  useEffect(() => {
+    if (!active) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      const isTypingTarget = target?.matches("input, textarea, select, [contenteditable='true']");
+      if (isTypingTarget) return;
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        move(-1);
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        move(1);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [active, activeIndex, items]);
 
   return (
     <>

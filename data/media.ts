@@ -109,6 +109,44 @@ export const directedShowcaseItems: ShowcaseItem[] = [
   }
 ];
 
-export const showcaseItems: ShowcaseItem[] = [...featuredShowcaseItems, ...directedShowcaseItems, ...galleryArchiveItems];
+const FOUR_K_PIXEL_COUNT = 3840 * 2160;
+const HOMEPAGE_SHOWCASE_LIMIT = 18;
+
+function uniqueByImage(items: ShowcaseItem[]) {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    const key = item.full || item.src;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+export function mediaQualityScore(item: ShowcaseItem) {
+  const pixels = item.width * item.height;
+  const megapixels = pixels / 1_000_000;
+  const resolutionScore = Math.min(megapixels, 24) * 100;
+  const fourKBonus = pixels >= FOUR_K_PIXEL_COUNT ? 700 : 0;
+  const directedBonus = item.album === "Directed Photos" ? 900 : 0;
+  const webpBonus = item.webp ? 50 : 0;
+  const sourceBonus = item.full.includes("/gallery-archive/") ? 80 : 0;
+
+  return directedBonus + fourKBonus + resolutionScore + webpBonus + sourceBonus + item.energy / 10;
+}
+
+function sortQualityFirst(items: ShowcaseItem[]) {
+  return [...items].sort((a, b) => {
+    const scoreDelta = mediaQualityScore(b) - mediaQualityScore(a);
+    if (scoreDelta !== 0) return scoreDelta;
+
+    const dateDelta = b.date.localeCompare(a.date);
+    if (dateDelta !== 0) return dateDelta;
+
+    return a.title.localeCompare(b.title);
+  });
+}
+
+export const showcaseItems: ShowcaseItem[] = sortQualityFirst(uniqueByImage([...featuredShowcaseItems, ...directedShowcaseItems, ...galleryArchiveItems]));
+export const homepageShowcaseItems: ShowcaseItem[] = showcaseItems.slice(0, HOMEPAGE_SHOWCASE_LIMIT);
 export const categories = ["All", ...Array.from(new Set(showcaseItems.map((item) => item.category)))] as const;
 export const albums = ["All Albums", ...Array.from(new Set(showcaseItems.map((item) => item.album)))] as const;

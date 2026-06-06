@@ -6,11 +6,13 @@ import { ArrowLeft, ArrowRight, ExternalLink, Maximize2, Sparkles, X } from "luc
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { featuredShowcaseItems as showcaseItems, type ShowcaseItem } from "@/data/media";
+import { homepageShowcaseItems as showcaseItems, type ShowcaseItem } from "@/data/media";
 import { cn } from "@/lib/utils";
 
 const SHOWCASE_HOVER_DELAY_MS = 2000;
 const SHOWCASE_SIDE_ZONE_WIDTH = "max(0px, calc(50% - min(37vw, 15.5rem)))";
+const showcaseThemeCount = new Set(showcaseItems.map((item) => item.category)).size;
+const showcaseAlbumCount = new Set(showcaseItems.map((item) => item.album)).size;
 
 type ShowcaseDirection = -1 | 1;
 
@@ -157,9 +159,9 @@ export function LivingShowcase() {
 
           <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3" aria-label="Showcase statistics">
             {[
-              ["06", "moments"],
-              ["03", "themes"],
-              ["4K", "source-first"]
+              [String(showcaseItems.length).padStart(2, "0"), "moments"],
+              [String(showcaseThemeCount).padStart(2, "0"), "themes"],
+              [String(showcaseAlbumCount).padStart(2, "0"), "albums"]
             ].map(([value, label]) => (
               <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4">
                 <strong className="block text-2xl font-black text-white">{value}</strong>
