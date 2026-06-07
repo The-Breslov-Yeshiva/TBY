@@ -84,7 +84,7 @@ export function GalleryExperience() {
       </section>
 
       <section className="section-pad mx-auto max-w-[96rem]">
-        <div className="nav-sticky-offset sticky z-20 mb-8 rounded-3xl border border-white/10 bg-gray-950/78 p-3 shadow-cinematic backdrop-blur-2xl">
+        <div className="nav-sticky-offset sticky z-20 mb-8 rounded-2xl border border-white/10 bg-gray-950/78 p-3 shadow-cinematic backdrop-blur-2xl sm:rounded-3xl">
           <div className="grid gap-3">
             <div className="grid gap-3 lg:grid-cols-[1fr_auto_auto] lg:items-center">
               <div className="flex flex-wrap gap-2">
@@ -119,7 +119,7 @@ export function GalleryExperience() {
                 <option value="energy">Energy</option>
               </select>
             </div>
-            <div className="flex gap-2 overflow-x-auto border-t border-white/10 pt-3" role="tablist" aria-label="Gallery albums">
+            <div className="touch-scroll flex gap-2 overflow-x-auto border-t border-white/10 pt-3" role="tablist" aria-label="Gallery albums">
               {albums.map((albumName) => (
                 <button
                   key={albumName}
@@ -140,7 +140,7 @@ export function GalleryExperience() {
         </div>
 
         {items.length ? (
-          <motion.div layout className="grid auto-rows-auto grid-cols-2 gap-2 md:grid-cols-[repeat(auto-fill,minmax(220px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(260px,1fr))]">
+          <motion.div layout className="grid auto-rows-auto grid-cols-2 gap-2 sm:gap-3 md:grid-cols-[repeat(auto-fill,minmax(210px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(240px,1fr))] 2xl:grid-cols-[repeat(auto-fill,minmax(260px,1fr))]">
             <AnimatePresence initial={false}>
               {items.map((item, index) => (
                 <GalleryCard key={item.id} item={item} index={index} open={() => setActive(item)} reduced={Boolean(reduced)} />
@@ -166,7 +166,7 @@ export function GalleryExperience() {
       <Dialog.Root open={Boolean(active)} onOpenChange={(open) => !open && setActive(null)}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-[90] bg-black/86 backdrop-blur-xl" />
-          <Dialog.Content className="fixed inset-0 z-[91] grid min-h-dvh grid-rows-[1fr_auto] gap-4 p-4 lg:grid-cols-[1fr_26rem] lg:grid-rows-1 lg:p-8">
+          <Dialog.Content className="fixed inset-0 z-[91] grid min-h-dvh grid-rows-[minmax(42dvh,1fr)_auto] gap-3 overflow-y-auto p-3 sm:gap-4 sm:p-4 lg:grid-cols-[1fr_26rem] lg:grid-rows-1 lg:overflow-hidden lg:p-8">
             {active && (
               <>
                 <Dialog.Title className="sr-only">{active.title}</Dialog.Title>
@@ -180,15 +180,15 @@ export function GalleryExperience() {
                     <ArrowRight className="h-5 w-5" />
                   </button>
                 </div>
-                <aside className="relative rounded-3xl border border-white/10 bg-gray-950/90 p-6 shadow-cinematic backdrop-blur-2xl">
+                <aside className="relative rounded-2xl border border-white/10 bg-gray-950/90 p-4 shadow-cinematic backdrop-blur-2xl sm:rounded-3xl sm:p-6 lg:max-h-[calc(100dvh-4rem)] lg:overflow-y-auto">
                   <Dialog.Close className="absolute right-5 top-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20" aria-label="Close image">
                     <X className="h-5 w-5" />
                   </Dialog.Close>
                   <p className="page-kicker">{active.album}</p>
-                  <h3 className="mt-5 pr-12 text-4xl font-black text-white">{active.title}</h3>
+                  <h3 className="mt-5 pr-12 text-3xl font-black text-white sm:text-4xl">{active.title}</h3>
                   <p className="mt-3 text-sm font-black uppercase tracking-[0.16em] text-amber-200">{active.category}</p>
                   <p className="mt-5 text-lg leading-8 text-gray-300">{active.story}</p>
-                  <div className="mt-8 flex gap-3">
+                  <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8">
                     <button type="button" onClick={() => move(-1)} className="rounded-full border border-white/15 bg-white/8 px-5 py-3 text-sm font-bold text-white hover:bg-white/14">Previous</button>
                     <button type="button" onClick={() => move(1)} className="rounded-full border border-white/15 bg-white/8 px-5 py-3 text-sm font-bold text-white hover:bg-white/14">Next</button>
                   </div>

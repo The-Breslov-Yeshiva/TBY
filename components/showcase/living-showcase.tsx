@@ -150,7 +150,7 @@ export function LivingShowcase() {
       <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
         <motion.div style={{ y: depthY }} className="relative z-10 max-w-2xl" data-showcase-reveal>
           <p className="page-kicker">Living Showcase</p>
-          <h2 id="living-showcase-title" className="mt-5 text-5xl font-black leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h2 id="living-showcase-title" className="mt-5 scroll-mt-[calc(var(--site-nav-height)+2rem)] text-5xl font-black leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
             A cinematic window into <span className="gradient-text">yeshiva life</span>
           </h2>
           <p className="mt-7 max-w-xl text-lg leading-8 text-gray-300 sm:text-xl">
@@ -187,7 +187,7 @@ export function LivingShowcase() {
         </motion.div>
 
         <div
-          className="relative min-h-[34rem] lg:min-h-[44rem]"
+          className="relative min-h-[clamp(30rem,120vw,38rem)] lg:min-h-[44rem]"
           onTouchStart={(event) => setTouchStart(event.touches[0]?.clientX ?? null)}
           onTouchEnd={(event) => handleTouchEnd(event.changedTouches[0]?.clientX ?? 0)}
           data-showcase-reveal
@@ -277,7 +277,7 @@ export function LivingShowcase() {
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-[90] bg-black/86 backdrop-blur-xl" />
-          <Dialog.Content className="fixed inset-0 z-[91] grid min-h-dvh grid-rows-[1fr_auto] overflow-hidden p-4 sm:p-8 lg:grid-cols-[1fr_28rem] lg:grid-rows-1">
+          <Dialog.Content className="fixed inset-0 z-[91] grid min-h-dvh grid-rows-[minmax(42dvh,1fr)_auto] gap-3 overflow-y-auto p-3 sm:gap-4 sm:p-6 lg:grid-cols-[1fr_28rem] lg:grid-rows-1 lg:overflow-hidden lg:p-8">
             <Dialog.Title className="sr-only">{activeItem.title}</Dialog.Title>
             <Dialog.Description className="sr-only">{activeItem.description}</Dialog.Description>
             <div className="relative min-h-0 overflow-hidden rounded-3xl border border-white/10 bg-black">
@@ -300,12 +300,12 @@ export function LivingShowcase() {
                 <ArrowRight className="h-5 w-5" />
               </button>
             </div>
-            <aside className="relative rounded-3xl border border-white/10 bg-gray-950/88 p-6 shadow-cinematic backdrop-blur-2xl lg:ml-4">
+            <aside className="relative rounded-2xl border border-white/10 bg-gray-950/88 p-4 shadow-cinematic backdrop-blur-2xl sm:rounded-3xl sm:p-6 lg:ml-4 lg:max-h-[calc(100dvh-4rem)] lg:overflow-y-auto">
               <Dialog.Close className="absolute right-5 top-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20" aria-label="Close showcase">
                 <X className="h-5 w-5" />
               </Dialog.Close>
               <p className="page-kicker">{activeItem.category}</p>
-              <h3 className="mt-5 pr-12 text-4xl font-black leading-tight text-white">{activeItem.title}</h3>
+              <h3 className="mt-5 pr-12 text-3xl font-black leading-tight text-white sm:text-4xl">{activeItem.title}</h3>
               <p className="mt-5 text-lg leading-8 text-gray-300">{activeItem.story}</p>
               <div className="mt-8 grid grid-cols-2 gap-3 text-sm">
                 <div className="rounded-2xl border border-white/10 bg-white/6 p-4">
@@ -317,7 +317,7 @@ export function LivingShowcase() {
                   <strong className="mt-1 block text-2xl text-white">{String(active + 1).padStart(2, "0")}</strong>
                 </div>
               </div>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
                 <button type="button" onClick={prev} className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/14">
                   <ArrowLeft className="h-4 w-4" />
                   Previous
@@ -413,7 +413,8 @@ function ShowcasePlane({
       }}
       className={cn(
         "group absolute top-7 z-10 w-[min(74vw,31rem)] overflow-hidden rounded-[1.75rem] border border-white/12 bg-white/6 text-left shadow-cinematic outline-none",
-        isActive && "border-amber-200/45"
+        isActive && "border-amber-200/45",
+        Math.abs(wrapped) > 3 ? "pointer-events-none" : "pointer-events-auto"
       )}
       style={{ left: "calc(50% - min(37vw, 15.5rem))", zIndex }}
       initial={false}

@@ -57,7 +57,7 @@ export function ApplicationForm() {
   const current = steps[step];
 
   return (
-    <form action="https://formspree.io/f/meojeeyg" method="POST" className="premium-card rounded-3xl p-8">
+    <form action="https://formspree.io/f/meojeeyg" method="POST" className="premium-card rounded-2xl p-5 sm:rounded-3xl sm:p-8">
       <input type="hidden" name="_subject" value="Student application" />
       <div className="mb-8">
         <div className="mb-2 flex items-center justify-between text-sm text-gray-400">
@@ -76,11 +76,11 @@ export function ApplicationForm() {
         ))}
       </div>
 
-      <div className="mt-8 flex items-center justify-between border-t border-white/15 pt-6">
+      <div className="mt-8 grid gap-3 border-t border-white/15 pt-6 sm:flex sm:items-center sm:justify-between">
         <button
           type="button"
           onClick={() => setStep((value) => Math.max(0, value - 1))}
-          className={cn("rounded-xl px-6 py-3 font-bold transition", step === 0 ? "cursor-not-allowed text-gray-500" : "text-gray-300 hover:text-white")}
+          className={cn("rounded-xl px-6 py-3 font-bold transition", step === 0 ? "cursor-not-allowed text-gray-500" : "bg-white/6 text-gray-300 hover:text-white sm:bg-transparent")}
           disabled={step === 0}
         >
           Previous

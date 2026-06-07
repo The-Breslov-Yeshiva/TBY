@@ -18,16 +18,13 @@ export function SiteNavigation() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-gray-950/72 backdrop-blur-2xl">
-      <div className="relative mx-auto flex h-32 max-w-[92rem] items-center justify-between gap-5 px-4 sm:px-6 lg:h-[10.5rem] lg:px-8 xl:h-48">
-        <Link href="/" className="absolute left-4 top-1/2 z-10 flex min-w-0 -translate-y-1/2 items-center gap-3 sm:left-6 sm:gap-4 lg:left-[clamp(-13rem,calc((100vw-92rem)/-2+1rem),1rem)]" aria-label="The Breslov Yeshiva home">
-          <img src="/breslov-logo-gold-cutout.png" alt="The Breslov Yeshiva" className="h-24 w-auto max-w-[21rem] object-contain sm:max-w-[27rem] lg:h-[7.5rem] lg:max-w-[33rem] xl:h-36 xl:max-w-[36rem]" />
-          <img src={site.logo} alt={site.logoAlt} className="h-24 w-auto max-w-[21rem] object-contain sm:max-w-[27rem] lg:h-[7.5rem] lg:max-w-[33rem] xl:h-36 xl:max-w-[36rem]" />
+      <div className="relative mx-auto flex h-[var(--site-nav-height)] max-w-[96rem] items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3 xl:gap-4" aria-label="The Breslov Yeshiva home">
+          <img src="/breslov-logo-gold-cutout.png" alt="The Breslov Yeshiva" className="h-[clamp(3rem,10vw,4rem)] w-auto max-w-[41vw] object-contain md:h-[4.5rem] md:max-w-[20rem] xl:h-[5.35rem] xl:max-w-[22rem]" />
+          <img src={site.logo} alt={site.logoAlt} className="h-[clamp(3rem,10vw,4rem)] w-auto max-w-[41vw] object-contain md:h-[4.5rem] md:max-w-[20rem] xl:h-[5.35rem] xl:max-w-[22rem]" />
         </Link>
-        <div className="pointer-events-none invisible flex min-w-0 items-center" aria-hidden="true">
-          <img src={site.logo} alt="" className="h-24 w-auto max-w-[21rem] object-contain sm:max-w-[27rem] lg:h-[7.5rem] lg:max-w-[33rem] xl:h-36 xl:max-w-[36rem]" />
-        </div>
 
-        <nav className="hidden items-center gap-7 text-base font-extrabold text-gray-200 lg:flex" aria-label="Primary navigation">
+        <nav className="hidden min-w-0 items-center gap-4 text-sm font-extrabold text-gray-200 xl:flex 2xl:gap-6 2xl:text-base" aria-label="Primary navigation">
           {primaryNavigation.map((item) => (
             <Link
               key={item.href}
@@ -96,17 +93,17 @@ export function SiteNavigation() {
           </div>
         </nav>
 
-        <div className="hidden items-center gap-3 sm:flex">
+        <div className="hidden shrink-0 items-center gap-2 xl:flex 2xl:gap-3">
           <Link
             href="/donate"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 px-6 py-3 text-sm font-black text-white shadow-[0_18px_46px_rgba(214,42,180,0.34)] transition hover:scale-[1.02] hover:shadow-[0_22px_56px_rgba(214,42,180,0.44)]"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 px-5 py-3 text-sm font-black text-white shadow-[0_18px_46px_rgba(214,42,180,0.34)] transition hover:scale-[1.02] hover:shadow-[0_22px_56px_rgba(214,42,180,0.44)] 2xl:px-6"
           >
             <Heart className="h-4 w-4 transition group-hover:scale-110" />
             Donate
           </Link>
           <Link
             href="/#register"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 px-6 py-3 text-sm font-black text-white shadow-[0_18px_46px_rgba(48,128,255,0.32)] transition hover:scale-[1.02] hover:from-indigo-500 hover:to-blue-500"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 px-5 py-3 text-sm font-black text-white shadow-[0_18px_46px_rgba(48,128,255,0.32)] transition hover:scale-[1.02] hover:from-indigo-500 hover:to-blue-500 2xl:px-6"
           >
             Apply Now
             <ArrowUpRight className="h-4 w-4" />
@@ -115,7 +112,7 @@ export function SiteNavigation() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white lg:hidden"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white xl:hidden"
           aria-expanded={open}
           aria-label="Open navigation"
           onClick={() => setOpen((value) => !value)}
@@ -125,7 +122,7 @@ export function SiteNavigation() {
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-gray-950/96 px-4 py-5 shadow-cinematic lg:hidden">
+        <div className="max-h-[calc(100dvh-var(--site-nav-height))] overflow-y-auto border-t border-white/10 bg-gray-950/96 px-4 py-5 shadow-cinematic xl:hidden">
           <nav className="grid gap-2" aria-label="Mobile navigation">
             {allMobileItems.map((item) => {
               const Icon = item.icon;

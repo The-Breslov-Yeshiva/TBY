@@ -28,20 +28,21 @@
   --gold: #f5c76b;
   --magenta: #b61592;
   --blue: #4f7cff;
-  --site-nav-height: 8rem;
-  --site-page-gap: 2rem;
+  --site-nav-height: 5.5rem;
+  --site-page-gap: 1.5rem;
   --site-sticky-gap: 1rem;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   :root {
-    --site-nav-height: 10.5rem;
+    --site-nav-height: 6.25rem;
   }
 }
 
 @media (min-width: 1280px) {
   :root {
-    --site-nav-height: 12rem;
+    --site-nav-height: 7.5rem;
+    --site-page-gap: 2rem;
   }
 }
 
@@ -64,6 +65,17 @@ body {
     linear-gradient(180deg, #050713, #080b16 44%, #030712);
   color: var(--ink);
   font-family: var(--font-sans);
+}
+
+body,
+main,
+section,
+article,
+div,
+nav,
+aside,
+form {
+  min-width: 0;
 }
 
 body::before {
@@ -159,6 +171,15 @@ textarea:focus-visible {
 .section-pad {
   padding-left: clamp(1rem, 4vw, 2rem);
   padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.touch-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .page-kicker {

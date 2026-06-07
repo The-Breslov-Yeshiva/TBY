@@ -29,14 +29,14 @@ export function RebbeimGrid() {
       <Dialog.Root open={Boolean(selected)} onOpenChange={(open) => !open && setSelected(null)}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-[90] bg-black/72 backdrop-blur-sm" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 z-[91] w-[calc(100vw-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-white/20 bg-gray-950 p-8 shadow-cinematic">
+          <Dialog.Content className="fixed left-1/2 top-1/2 z-[91] max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl border border-white/20 bg-gray-950 p-5 shadow-cinematic sm:rounded-3xl sm:p-8">
             <Dialog.Close className="absolute right-5 top-5 rounded-full bg-white/10 p-2 text-gray-300 transition hover:bg-white/20 hover:text-white" aria-label="Close biography">
               <X className="h-5 w-5" />
             </Dialog.Close>
             {selected && (
               <div className="flex flex-col gap-6 sm:flex-row">
-                <img src={selected.image} alt={selected.name} className={cn("h-36 w-36 rounded-2xl object-cover ring-4 ring-white/20", selected.focus)} />
-                <div>
+                <img src={selected.image} alt={selected.name} className={cn("h-32 w-32 shrink-0 rounded-2xl object-cover ring-4 ring-white/20 sm:h-36 sm:w-36", selected.focus)} />
+                <div className="min-w-0">
                   <Dialog.Description className="page-kicker">{selected.role}</Dialog.Description>
                   <Dialog.Title className="mt-2 text-3xl font-black text-white">{selected.name}</Dialog.Title>
                   <p className="mt-4 text-lg leading-8 text-gray-300">{selected.bio}</p>
