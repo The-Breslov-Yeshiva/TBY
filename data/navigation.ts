@@ -1,6 +1,7 @@
 import {
   CalendarDays,
   Camera,
+  Compass,
   FileText,
   GraduationCap,
   Home,
@@ -17,6 +18,7 @@ export const primaryNavigation = [
 ] as const;
 
 export const communityNavigation = [
+  { label: "Vision", href: "/vision", icon: Compass },
   { label: "Gallery", href: "/gallery", icon: Camera },
   { label: "Alumni", href: "/alumni", icon: GraduationCap },
   { label: "Newsletter", href: "/newsletter", icon: Newspaper },

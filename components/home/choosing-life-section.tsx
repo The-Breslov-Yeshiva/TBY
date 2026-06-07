@@ -1,34 +1,16 @@
 import Link from "next/link";
 import { ArrowUpRight, CalendarDays, CheckCircle2, Heart, Moon, Mountain, Sparkles, Sun } from "lucide-react";
+import {
+  visionClosingLine,
+  visionFoundingLine,
+  visionIntegrationLine,
+  visionIntroParagraphs,
+  visionOutcomes,
+  visionRhythmCards,
+  visionStatement
+} from "@/data/vision";
 
-const rhythmCards = [
-  {
-    title: "Morning",
-    subtitle: "Torah as Transformation",
-    icon: Sun,
-    body: "Torah learning, tefillah, and inner alignment through Tanach, Mishnah, Gemara, Halacha, and Machshava. Torah is approached not only as information, but as transformation - moving from source to lived experience."
-  },
-  {
-    title: "Afternoon",
-    subtitle: "Personal Development & Life-Building",
-    icon: Mountain,
-    body: "Students participate in guided growth frameworks focused on self-awareness, emotional development, relationships, and direction, while also pursuing practical parnassah pathways through degrees, vocations, entrepreneurship, and real-world skills."
-  },
-  {
-    title: "Evening",
-    subtitle: "Identity, Depth & Belonging",
-    icon: Moon,
-    body: "Expansion of identity and depth through פנימיות התורה, Chassidut, Jewish history, communal skills, and broader connection to כלל ישראל. The focus is not pressure, but meaningful growth and belonging."
-  }
-];
-
-const outcomes = [
-  "A lifelong structure for growth",
-  "Ongoing connection to Torah and Hashem",
-  "Practical capability to build and contribute",
-  "Emotional and spiritual clarity",
-  "A deep sense of purpose"
-];
+const rhythmIcons = [Sun, Mountain, Moon] as const;
 
 export function ChoosingLifeSection() {
   return (
@@ -39,28 +21,23 @@ export function ChoosingLifeSection() {
           <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(245,199,107,0.09),transparent_32%,rgba(79,124,255,0.08)_78%,transparent)]" aria-hidden="true" />
           <div className="relative mx-auto max-w-4xl text-center">
             <p className="page-kicker">The Breslov Yeshiva - Yeshivas Uvacharta Bachaim</p>
-            <h2 id="choosing-life-title" className="mt-5 text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h2 id="choosing-life-title" className="mt-5 scroll-mt-[calc(var(--site-nav-height)+2rem)] text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
               Choosing Life Through <span className="gradient-text">Integrated Torah and Living</span>
             </h2>
             <div className="mx-auto mt-7 max-w-3xl space-y-5 text-lg leading-8 text-gray-300">
-              <p>
-                We live in a generation filled with pressure, distraction, and fragmentation. Many people pursue growth, learning, and success, yet still feel internally disconnected. Torah is often studied, but not fully lived.
-              </p>
-              <p>
-                Eretz Yisrael today reflects both tremendous spiritual opportunity and deep personal challenge. Many seek a life of clarity, authenticity, and wholeness - a Torah life that shapes not only learning, but identity, relationships, עבודה, and purpose.
-              </p>
-              <p className="text-xl font-black text-amber-200">TBY / Yeshivas Uvacharta Bachaim was founded to answer this need.</p>
-              <p>
-                Its vision is simple: to help a person consciously choose life - physically, emotionally, spiritually, and practically - through a fully integrated Torah framework.
-              </p>
+              {visionIntroParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              <p className="text-xl font-black text-amber-200">{visionFoundingLine}</p>
+              <p>Its vision is simple: {visionStatement}</p>
             </div>
           </div>
         </div>
 
         <div className="p-6 sm:p-8 lg:p-12">
           <div className="grid gap-5 lg:grid-cols-3">
-            {rhythmCards.map((card) => {
-              const Icon = card.icon;
+            {visionRhythmCards.map((card, index) => {
+              const Icon = rhythmIcons[index] ?? Sparkles;
               return (
                 <article key={card.title} className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.18)]">
                   <div className="flex items-center gap-4">
@@ -83,7 +60,7 @@ export function ChoosingLifeSection() {
               <Sparkles className="h-5 w-5" aria-hidden="true" />
             </div>
             <p className="mx-auto mt-5 max-w-2xl text-2xl font-black leading-9 text-white">
-              The goal is not to divide Torah from life, but to integrate them.
+              {visionIntegrationLine}
             </p>
           </div>
 
@@ -94,7 +71,7 @@ export function ChoosingLifeSection() {
                 <h3 className="mt-3 text-3xl font-black text-white">A life that can keep growing.</h3>
               </div>
               <div className="grid flex-1 gap-3 sm:grid-cols-2">
-                {outcomes.map((outcome) => (
+                {visionOutcomes.map((outcome) => (
                   <div key={outcome} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-4">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-amber-200" aria-hidden="true" />
                     <p className="text-sm font-bold leading-6 text-gray-200">{outcome}</p>
@@ -103,7 +80,7 @@ export function ChoosingLifeSection() {
               </div>
             </div>
             <p className="mx-auto mt-8 max-w-4xl text-center text-lg font-bold leading-8 text-gray-200">
-              The vision of Yeshivas Uvacharta Bachaim is not merely to educate students, but to cultivate people who live intentionally, connect deeply, contribute meaningfully, and actively choose life each day.
+              {visionClosingLine}
             </p>
           </div>
 

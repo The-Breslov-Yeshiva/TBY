@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BookOpen, CheckCircle2, HeartHandshake, MapPin, Sparkles, Users } from "lucide-react";
 import { HeroVideo } from "@/components/hero-video";
+import { VisionTeaser } from "@/components/home/vision-teaser";
 import { HomeSchedule } from "@/components/home-schedule";
 import { LivingShowcase } from "@/components/showcase/living-showcase";
 import { getTodaySummary } from "@/data/schedule";
@@ -64,6 +65,8 @@ export default function HomePage() {
       </section>
 
       <LivingShowcase />
+
+      <VisionTeaser />
 
       <section id="about" className="section-pad mx-auto mt-24 max-w-6xl">
         <div className="grid gap-8 md:grid-cols-2">
