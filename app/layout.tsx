@@ -6,17 +6,35 @@ import { SmoothScroll } from "@/components/smooth-scroll";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.thebreslovyeshiva.com"),
+  metadataBase: new URL("https://thebreslovyeshiva.com"),
   title: {
     default: site.name,
     template: `%s | ${site.name}`
   },
   description: site.description,
+  alternates: {
+    canonical: "/"
+  },
   openGraph: {
     title: site.name,
     description: site.description,
-    images: ["/yeshiva-logo-og.jpg"],
+    url: "/",
+    siteName: site.name,
+    images: [
+      {
+        url: "/tby-social-preview.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Students learning around a table at The Breslov Yeshiva"
+      }
+    ],
     type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: site.description,
+    images: ["/tby-social-preview.jpg"]
   },
   icons: {
     icon: [
