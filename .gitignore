@@ -2,7 +2,9 @@ github_deploy_key
 github_deploy_key.pub
 node_modules/
 .env
+.env.*
 .cloudflare-env.ps1
+.wrangler/
 .DS_Store
 dist/
 build/
@@ -14,3 +16,27 @@ video/
 video-upscale-samples/
 TBY Gallery/
 Headshots Rabbi's/
+Directed photos/
+Theme 2 website.txt
+app/integrated-torah-theme/
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+id_rsa*
+id_ed25519*
+*-private.*
+*_private.*
+
+# Legacy static-site artifacts kept out of the public Next.js source.
+/*.html
+/*.js
+/*.jpg
+/*.jpeg
+/*.png
+/*.webp
+/*.ico
+/*.svg
+/*.webmanifest
