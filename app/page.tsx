@@ -5,6 +5,7 @@ import { VisionTeaser } from "@/components/home/vision-teaser";
 import { HomeSchedule } from "@/components/home-schedule";
 import { LivingShowcase } from "@/components/showcase/living-showcase";
 import { getTodaySummary } from "@/data/schedule";
+import { site } from "@/data/site";
 import { showHomeHeroVideo, showHomeScheduleWidget, showRabbiKivakGuidanceSection } from "@/data/site-flags";
 
 const features = [
@@ -134,8 +135,10 @@ export default function HomePage() {
               <p className="mx-auto mt-5 max-w-2xl text-center text-xl leading-8 text-gray-300">
                 Take the first step toward Torah excellence and spiritual fulfillment.
               </p>
-              <form action="https://formspree.io/f/meojeeyg" method="POST" className="mx-auto mt-12 max-w-3xl">
+              <form action={site.forms.action} method="POST" className="mx-auto mt-12 max-w-3xl">
                 <input type="hidden" name="_subject" value="Homepage application inquiry" />
+                <input type="hidden" name="_next" value={site.forms.receivedUrl} />
+                <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
                 <div className="grid gap-6 sm:grid-cols-2">
                   <Field id="first-name" name="first-name" label="First Name" required />
                   <Field id="last-name" name="last-name" label="Last Name" required />

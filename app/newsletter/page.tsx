@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Newsletter",
@@ -28,8 +29,10 @@ export default function NewsletterPage() {
 
         <section className="premium-card rounded-3xl p-8">
           <h2 className="text-3xl font-black text-white">Subscribe</h2>
-          <form action="https://formspree.io/f/meojeeyg" method="POST" className="mt-8 space-y-5">
+          <form action={site.forms.action} method="POST" className="mt-8 space-y-5">
             <input type="hidden" name="_subject" value="Newsletter signup" />
+            <input type="hidden" name="_next" value={site.forms.receivedUrl} />
+            <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
             <div>
               <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-300">Name</label>
               <input id="name" name="name" className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-white" />

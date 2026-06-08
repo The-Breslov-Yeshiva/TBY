@@ -6,7 +6,7 @@ import { SmoothScroll } from "@/components/smooth-scroll";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thebreslovyeshiva.com"),
+  metadataBase: new URL(site.url),
   title: {
     default: site.name,
     template: `%s | ${site.name}`

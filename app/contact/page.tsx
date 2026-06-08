@@ -31,8 +31,10 @@ export default function ContactPage() {
         <section className="premium-card rounded-3xl p-8">
           <h2 className="text-center text-3xl font-black text-white">Send a Message</h2>
           <p className="mx-auto mt-3 max-w-md text-center text-gray-300">Inquiries go to the yeshiva office directly.</p>
-          <form action="https://formspree.io/f/meojeeyg" method="POST" className="mt-8 space-y-6">
+          <form action={site.forms.action} method="POST" className="mt-8 space-y-6">
             <input type="hidden" name="_subject" value="Website contact inquiry" />
+            <input type="hidden" name="_next" value={site.forms.receivedUrl} />
+            <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
             <div className="grid gap-6 sm:grid-cols-2">
               <Field id="first-name" label="First Name" name="first-name" required />
               <Field id="last-name" label="Last Name" name="last-name" required />
