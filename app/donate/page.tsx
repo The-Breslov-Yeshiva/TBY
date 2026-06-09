@@ -41,7 +41,14 @@ export default function DonatePage() {
             {givingOptions.map((option) => {
               const Icon = option.icon;
               return (
-                <a key={option.label} href={option.href} target="_blank" rel="noopener noreferrer" className="flex items-center rounded-2xl border border-white/10 bg-white/8 p-4 transition hover:bg-white/14">
+                <a
+                  key={option.label}
+                  href={option.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  referrerPolicy="no-referrer"
+                  className="flex items-center rounded-2xl border border-white/10 bg-white/8 p-4 transition hover:bg-white/14"
+                >
                   <span className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${option.tone}`}>
                     <Icon className="h-7 w-7 text-white" />
                   </span>
@@ -49,6 +56,15 @@ export default function DonatePage() {
                 </a>
               );
             })}
+          </div>
+          <div className="mt-8 rounded-2xl border border-emerald-300/20 bg-emerald-300/[0.07] p-5">
+            <h3 className="font-bold text-white">Secure Giving</h3>
+            <p className="mt-2 text-sm leading-6 text-gray-300">
+              Payment details are entered only on Stripe, Cash App, or Venmo over HTTPS. This website does not collect, process, or store card numbers, bank details, payment credentials, or donation amounts.
+            </p>
+            <p className="mt-2 text-sm leading-6 text-gray-400">
+              Donation links open directly with no referrer data sent from this site.
+            </p>
           </div>
         </section>
 

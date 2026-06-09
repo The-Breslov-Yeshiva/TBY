@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`
   },
   description: site.description,
+  referrer: "no-referrer",
   alternates: {
     canonical: "/"
   },

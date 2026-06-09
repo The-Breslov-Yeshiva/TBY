@@ -1,4 +1,6 @@
-const siteUrl = "https://thebreslovyeshiva.com";
+type HttpsUrl = `https://${string}`;
+
+const siteUrl: HttpsUrl = "https://thebreslovyeshiva.com";
 
 export const site = {
   url: siteUrl,
@@ -10,12 +12,12 @@ export const site = {
   email: "info@tbye.org",
   applyHref: "/#register",
   forms: {
-    action: "https://formspree.io/f/meojeeyg",
-    receivedUrl: `${siteUrl}/received`
+    action: "https://formspree.io/f/meojeeyg" as HttpsUrl,
+    receivedUrl: `${siteUrl}/received` as HttpsUrl
   },
   donationLinks: {
-    stripe: "https://donate.stripe.com/fZebL4dC66aQaHe144",
-    cashApp: "https://cash.app/$TBYeshiva",
-    venmo: "https://venmo.com/TheBreslov-Yeshiva"
+    stripe: "https://donate.stripe.com/fZebL4dC66aQaHe144" as HttpsUrl,
+    cashApp: "https://cash.app/$TBYeshiva" as HttpsUrl,
+    venmo: "https://venmo.com/TheBreslov-Yeshiva" as HttpsUrl
   }
 } as const;
