@@ -8,11 +8,18 @@ import { albums, categories, showcaseItems } from "@/data/media";
 import type { ShowcaseItem } from "@/data/media";
 import { cn } from "@/lib/utils";
 
+type GallerySort = "curated" | "newest";
+const showDevGalleryMarkers = process.env.NODE_ENV === "development";
+
+function galleryMarkerId(item: ShowcaseItem) {
+  return item.id.replace(/^gallery-/, "g-");
+}
+
 export function GalleryExperience() {
   const [filter, setFilter] = useState<(typeof categories)[number]>("All");
   const [album, setAlbum] = useState<(typeof albums)[number]>("All Albums");
   const [query, setQuery] = useState("");
-  const [sort, setSort] = useState("curated");
+  const [sort, setSort] = useState<GallerySort>("curated");
   const [active, setActive] = useState<ShowcaseItem | null>(null);
   const reduced = useReducedMotion();
 
@@ -27,7 +34,6 @@ export function GalleryExperience() {
 
     return [...filtered].sort((a, b) => {
       if (sort === "newest") return b.date.localeCompare(a.date);
-      if (sort === "energy") return b.energy - a.energy;
       return showcaseItems.indexOf(a) - showcaseItems.indexOf(b);
     });
   }, [album, filter, query, sort]);
@@ -113,10 +119,9 @@ export function GalleryExperience() {
                   className="h-11 w-full rounded-full border border-white/10 bg-white/8 pl-11 pr-4 text-sm font-bold text-white placeholder:text-gray-500 lg:w-64"
                 />
               </label>
-              <select value={sort} onChange={(event) => setSort(event.target.value)} className="h-11 rounded-full border border-white/10 bg-gray-950 px-4 text-sm font-bold text-white">
+              <select value={sort} onChange={(event) => setSort(event.target.value as GallerySort)} className="h-11 rounded-full border border-white/10 bg-gray-950 px-4 text-sm font-bold text-white">
                 <option value="curated">Curated</option>
                 <option value="newest">Newest</option>
-                <option value="energy">Energy</option>
               </select>
             </div>
             <div className="touch-scroll flex gap-2 overflow-x-auto border-t border-white/10 pt-3" role="tablist" aria-label="Gallery albums">
@@ -173,6 +178,7 @@ export function GalleryExperience() {
                 <Dialog.Description className="sr-only">{active.description}</Dialog.Description>
                 <div className="relative min-h-0 overflow-hidden rounded-3xl border border-white/10 bg-black">
                   <img src={active.full} alt={active.alt} className="h-full w-full object-contain" />
+                  {showDevGalleryMarkers ? <GalleryDevMarker item={active} className="bottom-3 right-3" /> : null}
                   <button type="button" onClick={() => move(-1)} className="absolute left-4 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-md transition hover:bg-white/20 sm:inline-flex" aria-label="Previous image">
                     <ArrowLeft className="h-5 w-5" />
                   </button>
@@ -188,6 +194,12 @@ export function GalleryExperience() {
                   <h3 className="mt-5 pr-12 text-3xl font-black text-white sm:text-4xl">{active.title}</h3>
                   <p className="mt-3 text-sm font-black uppercase tracking-[0.16em] text-amber-200">{active.category}</p>
                   <p className="mt-5 text-lg leading-8 text-gray-300">{active.story}</p>
+                  {showDevGalleryMarkers ? (
+                    <div className="mt-5 rounded-2xl border border-amber-200/20 bg-amber-200/10 p-3">
+                      <span className="text-xs font-black uppercase tracking-[0.16em] text-amber-200">Dev marker</span>
+                      <code className="mt-1 block select-all text-sm font-bold text-white">{galleryMarkerId(active)}</code>
+                    </div>
+                  ) : null}
                   <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8">
                     <button type="button" onClick={() => move(-1)} className="rounded-full border border-white/15 bg-white/8 px-5 py-3 text-sm font-bold text-white hover:bg-white/14">Previous</button>
                     <button type="button" onClick={() => move(1)} className="rounded-full border border-white/15 bg-white/8 px-5 py-3 text-sm font-bold text-white hover:bg-white/14">Next</button>
@@ -253,6 +265,21 @@ function GalleryCard({ item, index, open, reduced }: { item: ShowcaseItem; index
       <span className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/28 text-white backdrop-blur-md">
         <ZoomIn className="h-4 w-4" />
       </span>
+      {showDevGalleryMarkers ? <GalleryDevMarker item={item} className="bottom-2 right-2" /> : null}
     </motion.button>
+  );
+}
+
+function GalleryDevMarker({ item, className }: { item: ShowcaseItem; className?: string }) {
+  return (
+    <code
+      className={cn(
+        "pointer-events-none absolute z-20 max-w-[calc(100%-1rem)] rounded-md border border-amber-200/40 bg-black/78 px-2 py-1 text-[10px] font-black leading-none text-amber-100 shadow-lg backdrop-blur-md",
+        className
+      )}
+      title={`Development gallery marker: ${item.id}`}
+    >
+      {galleryMarkerId(item)}
+    </code>
   );
 }

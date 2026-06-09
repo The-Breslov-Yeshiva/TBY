@@ -193,7 +193,7 @@ export function LivingShowcase() {
           data-showcase-reveal
         >
           <div className="absolute left-2 top-6 hidden w-56 rounded-3xl border border-white/10 bg-white/8 p-4 backdrop-blur-xl md:block">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-amber-200">Current Frame</p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-amber-200">Current Moment</p>
             <AnimatePresence mode="wait" custom={direction}>
               <motion.p
                 key={`${activeItem.id}-category`}
@@ -309,12 +309,16 @@ export function LivingShowcase() {
               <p className="mt-5 text-lg leading-8 text-gray-300">{activeItem.story}</p>
               <div className="mt-8 grid grid-cols-2 gap-3 text-sm">
                 <div className="rounded-2xl border border-white/10 bg-white/6 p-4">
-                  <span className="text-gray-400">Energy</span>
-                  <strong className="mt-1 block text-2xl text-white">{activeItem.energy}</strong>
+                  <span className="text-gray-400">Album</span>
+                  <strong className="mt-1 block truncate text-lg text-white" title={activeItem.album}>
+                    {activeItem.album}
+                  </strong>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/6 p-4">
-                  <span className="text-gray-400">Frame</span>
-                  <strong className="mt-1 block text-2xl text-white">{String(active + 1).padStart(2, "0")}</strong>
+                  <span className="text-gray-400">Moment</span>
+                  <strong className="mt-1 block truncate text-lg text-white" title={activeItem.eyebrow}>
+                    {activeItem.eyebrow}
+                  </strong>
                 </div>
               </div>
               <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
