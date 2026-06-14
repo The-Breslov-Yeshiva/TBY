@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CreditCard, Heart, Landmark, Wallet } from "lucide-react";
+import { CampaignCountdown } from "@/components/campaign-countdown";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -33,10 +34,12 @@ export default function DonatePage() {
         </p>
       </div>
 
+      <CampaignCountdown variant="donate" className="mt-12" />
+
       <div className="mt-16 grid gap-8 lg:grid-cols-2">
         <section className="premium-card rounded-3xl p-8">
-          <h2 className="text-2xl font-black text-white">Make a Difference</h2>
-          <p className="mt-4 leading-8 text-gray-300">Every contribution helps us provide scholarships, strengthen daily shiurim, and maintain a warm environment for serious growth.</p>
+          <h2 className="text-2xl font-black text-white">Other Ways to Give</h2>
+          <p className="mt-4 leading-8 text-gray-300">The campaign link is the primary giving path right now. These direct options remain available for donors who need them.</p>
           <div className="mt-8 space-y-4">
             {givingOptions.map((option) => {
               const Icon = option.icon;
