@@ -138,13 +138,22 @@ export function CampaignCountdown({ variant = "hero", className }: { variant?: C
               target="_blank"
               rel="noopener noreferrer"
               referrerPolicy="no-referrer"
-              className={cn("inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-sm font-black text-gray-950 transition hover:bg-amber-100", isLarge && "px-8 py-5 text-base", isHero && "px-7 py-4 text-base")}
+              className={cn("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-white px-6 py-4 text-sm font-black text-gray-950 transition hover:bg-amber-100", isLarge && "px-8 py-5 text-base", isSpotlight && "min-w-[17.5rem]", isHero && "px-7 py-4 text-base")}
             >
               Donate to the Campaign
               <ArrowUpRight className="h-4 w-4" />
             </a>
             <p className={cn("text-sm font-bold leading-6 text-gray-300", isLarge && "text-base", isHero && "text-base", isSpotlight && "max-w-none")}>
-              {isComplete ? "The countdown is complete. The campaign link remains open." : `Countdown ends ${fundraisingCampaign.endsAtLabel}.`}
+              {isComplete ? (
+                "The countdown is complete. The campaign link remains open."
+              ) : isSpotlight ? (
+                <>
+                  <span className="block">Countdown ends Wednesday night,</span>
+                  <span className="block">Beit Shemesh time.</span>
+                </>
+              ) : (
+                `Countdown ends ${fundraisingCampaign.endsAtLabel}.`
+              )}
             </p>
           </div>
         </div>
