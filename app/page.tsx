@@ -23,15 +23,15 @@ export default function HomePage() {
 
   return (
     <main className="relative">
-      <section className="relative min-h-[100svh] overflow-hidden px-4 pb-20 pt-[calc(var(--site-nav-height)+clamp(1.5rem,5vw,3.5rem))] sm:px-6 lg:px-8">
+      <section className="relative min-h-[100svh] overflow-hidden px-4 pb-20 pt-[calc(var(--site-nav-height)+clamp(1.5rem,5vw,3.5rem))] sm:px-6 lg:px-4 xl:px-0">
         <div className="absolute inset-0 z-0">
           <img src="/about-hero-tree-group.jpg" alt="The Breslov Yeshiva talmidim gathered under a tree overlooking the hills" className="h-full w-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-950/92 via-gray-950/68 to-gray-950/75" />
         </div>
 
-        <div className={`relative z-10 mx-auto flex w-full max-w-[96rem] lg:min-h-[calc(100svh-var(--site-nav-height)-3rem)] lg:items-center ${showHomeHeroVideo ? "2xl:max-w-[98rem]" : ""}`}>
-          <div className="mx-auto grid w-full gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(28rem,1fr)] lg:items-center lg:gap-x-8 xl:grid-cols-[minmax(0,0.82fr)_minmax(34rem,1fr)] xl:gap-x-12">
-            <div className="min-w-0 text-center lg:text-left">
+        <div className={`relative z-10 mx-auto flex w-full max-w-[112rem] lg:min-h-[calc(100svh-var(--site-nav-height)-3rem)] lg:items-center 2xl:max-w-[122rem] ${showHomeHeroVideo ? "2xl:max-w-[122rem]" : ""}`}>
+          <div className="mx-auto grid w-full gap-10 lg:translate-x-16 lg:grid-cols-[minmax(0,0.68fr)_minmax(34rem,1.34fr)] lg:items-center lg:gap-x-8 xl:translate-x-28 xl:grid-cols-[minmax(0,0.66fr)_minmax(48rem,1.5fr)] xl:gap-x-10 2xl:translate-x-40 2xl:grid-cols-[minmax(0,0.68fr)_minmax(54rem,1.55fr)]">
+            <div className="min-w-0 text-center lg:-ml-4 lg:text-left xl:-ml-10 2xl:-ml-16">
               <h1 className="gradient-text text-4xl font-light leading-tight drop-shadow-2xl sm:text-5xl lg:text-[clamp(3rem,3.8vw,4.6rem)]">
                 <span className="block">Where Torah Meets Transformation</span>
               </h1>
@@ -48,7 +48,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <CampaignCountdown variant="hero" className="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-none" />
+            <CampaignCountdown variant="spotlight" className="mx-auto w-full max-w-4xl lg:mx-0 lg:max-w-none lg:scale-[1.015] lg:origin-right xl:-mr-20 xl:scale-[1.035] 2xl:-mr-36" />
 
             {showHomeHeroVideo ? (
               <div className="relative w-full min-w-0 lg:col-span-2">
