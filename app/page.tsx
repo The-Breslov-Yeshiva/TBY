@@ -23,32 +23,22 @@ export default function HomePage() {
 
   return (
     <main className="relative">
-      <section className="relative isolate min-h-[100svh] overflow-hidden px-4 pb-16 pt-[calc(var(--site-nav-height)+clamp(1rem,4vw,2.5rem))] sm:px-6 lg:px-8">
-        <div className="absolute inset-0 z-0">
-          <img src="/about-hero-tree-group.jpg" alt="" className="h-full w-full object-cover opacity-25" aria-hidden="true" />
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-950/94 via-gray-950/76 to-gray-950/92" />
-        </div>
-        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-var(--site-nav-height)-3rem)] w-full max-w-[96rem] items-center">
-          <CampaignCountdown variant="feature" className="w-full" />
-        </div>
-      </section>
-
-      <section className="relative min-h-[82svh] overflow-hidden px-4 pb-20 pt-20 sm:px-6 lg:px-8">
+      <section className="relative min-h-[100svh] overflow-hidden px-4 pb-20 pt-[calc(var(--site-nav-height)+clamp(1.5rem,5vw,3.5rem))] sm:px-6 lg:px-8">
         <div className="absolute inset-0 z-0">
           <img src="/about-hero-tree-group.jpg" alt="The Breslov Yeshiva talmidim gathered under a tree overlooking the hills" className="h-full w-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-950/92 via-gray-950/68 to-gray-950/75" />
         </div>
 
-        <div className={`relative z-10 mx-auto flex w-full max-w-[92rem] lg:min-h-[calc(82svh-8rem)] lg:items-center ${showHomeHeroVideo ? "lg:max-w-[72rem] 2xl:max-w-[78rem]" : "lg:max-w-4xl 2xl:max-w-5xl"}`}>
-          <div className={showHomeHeroVideo ? "mx-auto grid w-full gap-y-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)] lg:items-center lg:gap-x-8 xl:grid-cols-[minmax(26rem,0.9fr)_minmax(28rem,1.1fr)] xl:gap-x-10" : "mx-auto w-full"}>
-            <div className={`min-w-0 text-center ${showHomeHeroVideo ? "lg:text-left" : ""}`}>
+        <div className={`relative z-10 mx-auto flex w-full max-w-[96rem] lg:min-h-[calc(100svh-var(--site-nav-height)-3rem)] lg:items-center ${showHomeHeroVideo ? "2xl:max-w-[98rem]" : ""}`}>
+          <div className="mx-auto grid w-full gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(28rem,1fr)] lg:items-center lg:gap-x-8 xl:grid-cols-[minmax(0,0.82fr)_minmax(34rem,1fr)] xl:gap-x-12">
+            <div className="min-w-0 text-center lg:text-left">
               <h1 className="gradient-text text-4xl font-light leading-tight drop-shadow-2xl sm:text-5xl lg:text-[clamp(3rem,3.8vw,4.6rem)]">
                 <span className="block">Where Torah Meets Transformation</span>
               </h1>
-              <p className={`mx-auto mt-7 max-w-2xl text-xl leading-8 text-gray-100 drop-shadow-lg lg:text-2xl lg:leading-9 ${showHomeHeroVideo ? "lg:mx-0 lg:max-w-2xl" : "lg:max-w-3xl"}`}>
+              <p className="mx-auto mt-7 max-w-2xl text-xl leading-8 text-gray-100 drop-shadow-lg lg:mx-0 lg:text-2xl lg:leading-9">
                 An English-speaking yeshiva dedicated to healthy, balanced growth in Torah and avodas Hashem, nurturing the next generation of inspired Torah scholars.
               </p>
-              <div className={`mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-nowrap ${showHomeHeroVideo ? "lg:justify-start" : "lg:justify-center"}`}>
+              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-nowrap lg:justify-start">
                 <Link href="#register" className="rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 px-7 py-4 text-lg font-semibold text-white shadow-lg transition hover:from-indigo-500 hover:to-blue-500">
                   Begin Your Journey
                 </Link>
@@ -58,8 +48,10 @@ export default function HomePage() {
               </div>
             </div>
 
+            <CampaignCountdown variant="hero" className="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-none" />
+
             {showHomeHeroVideo ? (
-              <div className="relative w-full min-w-0">
+              <div className="relative w-full min-w-0 lg:col-span-2">
                 <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_50%_20%,rgba(245,199,107,0.18),transparent_38%),radial-gradient(circle_at_80%_80%,rgba(79,124,255,0.18),transparent_35%)] blur-2xl" aria-hidden="true" />
                 <HeroVideo />
               </div>
